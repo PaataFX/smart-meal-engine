@@ -5,13 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Meal Engine | პრემიუმ მენიუ</title>
     
-    <!-- Google Fonts - პრემიუმ ვიზუალისთვის (მაგ. Playfair Display სათაურებისთვის და Montserrat ტექსტისთვის) -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome აიკონებისთვის -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- CSS ფაილის მიბმა -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,7 +27,7 @@
         <section class="presets-section">
             <div class="section-header">
                 <h2><i class="fa-solid fa-wand-magic-sparkles"></i> ჭკვიანი კონსტრუქტორი</h2>
-                <p>აირჩიე მზა შაბლონი ან ააწყვე შენი კომბო</p>
+                <p>აირჩიე მზა შაბლონი ან ააწყვე შენი უნიკალური კომბო</p>
             </div>
             
             <div class="preset-buttons">
@@ -42,9 +37,17 @@
                 <button class="preset-btn active" data-preset="custom"><i class="fa-solid fa-sliders"></i> შენით აწყობა</button>
             </div>
 
+            <!-- შენით აწყობის (Custom) პანელი (თავიდან გამოჩნდება რადგან აქტიურია) -->
+            <div id="custom-combo-builder" class="custom-builder-panel">
+                <p class="builder-title">აირჩიე კატეგორიები კომბოსთვის:</p>
+                <div class="category-checkboxes" id="custom-checkboxes">
+                    <!-- JS-ით დაგენერირდება ჩექბოქსები -->
+                </div>
+            </div>
+
             <div class="combo-action">
                 <button id="spin-combo-btn" class="btn-primary">
-                    <i class="fa-solid fa-dice"></i> სრული მენიუს გენერაცია
+                    <i class="fa-solid fa-dice"></i> მენიუს გენერაცია
                 </button>
             </div>
         </section>
@@ -52,7 +55,12 @@
         <!-- სექცია 2: მაცივრის ინვენტარი (Pantry) -->
         <section class="inventory-section">
             <div class="section-header inventory-header">
-                <h2><i class="fa-solid fa-kitchen-set"></i> რა გვაქვს სახლში?</h2>
+                <div class="inventory-title-group">
+                    <h2><i class="fa-solid fa-kitchen-set"></i> რა გვაქვს სახლში?</h2>
+                    <p id="missing-ingredients-alert" class="missing-alert hidden">
+                        <i class="fa-solid fa-cart-shopping"></i> საყიდელი გაქვს: <span></span>
+                    </p>
+                </div>
                 <div class="toggle-container">
                     <span class="toggle-label">მაღაზიაში ჩასვლა არ მეზარება</span>
                     <label class="switch">
@@ -64,31 +72,19 @@
             
             <div class="ingredient-chips" id="ingredient-list">
                 <!-- JS-ით ჩაიტვირთება ინგრედიენტების ჩიპები -->
-                <!-- მაგ: <span class="chip active">კარტოფილი</span> -->
             </div>
         </section>
 
         <!-- სექცია 3: კატეგორიების რენდომაიზერები (9 ბლოკი) -->
         <section class="categories-grid" id="categories-container">
             <!-- კატეგორიების ბარათები JS-ით დაგენერირდება აქ -->
-            <!-- ნიმუში, თუ როგორ გამოიყურება ერთი ბარათი (HTML-ში წარმოდგენისთვის):
-            <div class="category-card" data-category="main">
-                <div class="card-header">
-                    <h3>🍲 ძირითადი კერძები</h3>
-                </div>
-                <div class="card-body">
-                    <div class="result-placeholder">დაატრიალე კატეგორია...</div>
-                </div>
-                <button class="btn-spin-single"><i class="fa-solid fa-rotate-right"></i></button>
-            </div>
-            -->
         </section>
 
     </main>
 
     <!-- Admin მოდალური ფანჯარა (ახალი კერძის დამატება/რედაქტირება) -->
     <div id="admin-modal" class="modal hidden">
-        <div class="modal-content">
+        <div class="modal-content admin-scroll">
             <div class="modal-header">
                 <h2>კერძის მართვა</h2>
                 <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
@@ -100,6 +96,11 @@
                     <input type="text" id="dish-name" required placeholder="მაგ. ხინკალი">
                 </div>
                 
+                <div class="form-group">
+                    <label for="dish-image">ფოტოს ლინკი (URL)</label>
+                    <input type="url" id="dish-image" placeholder="https://images.unsplash.com/...">
+                </div>
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="dish-category">კატეგორია</label>
@@ -116,19 +117,33 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="dish-difficulty">სირთულე</label>
-                        <select id="dish-difficulty">
-                            <option value="easy">მარტივი</option>
-                            <option value="medium">საშუალო</option>
-                            <option value="hard">რთული</option>
+                        <label for="dish-price">ფასი</label>
+                        <select id="dish-price" required>
+                            <option value="$">$ (ბიუჯეტური)</option>
+                            <option value="$$">$$ (საშუალო)</option>
+                            <option value="$$$">$$$ (ძვირი)</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- აქ დაემატება დროის, ფასის და თეგების ველები JS-ის მეშვეობით -->
-                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dish-time-active">დრო (აქტიური)</label>
+                        <input type="text" id="dish-time-active" placeholder="მაგ. 15 წთ" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dish-time-total">დრო (სრული)</label>
+                        <input type="text" id="dish-time-total" placeholder="მაგ. 45 წთ" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dish-ingredients">ინგრედიენტები (გამოყავით მძიმით)</label>
+                    <input type="text" id="dish-ingredients" placeholder="მაგ. ქათამი, ნიორი, ნაღები">
+                </div>
+
                 <div class="form-group security-group">
-                    <label for="admin-pin"><i class="fa-solid fa-lock"></i> PIN კოდი (ცვლილებისთვის)</label>
+                    <label for="admin-pin"><i class="fa-solid fa-lock"></i> PIN კოდი</label>
                     <input type="password" id="admin-pin" required placeholder="შეიყვანეთ კოდი">
                 </div>
 
@@ -140,7 +155,17 @@
         </div>
     </div>
 
-    <!-- JS ფაილის მიბმა -->
+    <!-- მოდალური ფანჯარა "შედეგის" დეტალებისთვის (გაიშლება კერძზე დაჭერისას) -->
+    <div id="meal-detail-modal" class="modal hidden">
+        <div class="modal-content meal-detail-content">
+            <button class="close-detail-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div id="meal-detail-body">
+                <!-- JS ჩაყრის კერძის სრულ დეტალებს ფოტოსთან ერთად -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JS მოდულის მიბმა -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
