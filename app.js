@@ -34,22 +34,77 @@ const CATEGORIES = {
 
 const ADMIN_PIN = '62442';
 
-const ALL_INGREDIENTS = ['კარტოფილი', 'ქათამი', 'ყველი', 'კვერცხი', 'პომიდორი', 'კიტრი', 'მაკარონი', 'ფარში', 'სოკო', 'ლობიო', 'ბრინჯი'];
+const ALL_INGREDIENTS = [
+    'ქათამი', 'კარტოფილი', 'ყველი', 'სულგუნი', 'კვერცხი', 'პომიდორი', 'კიტრი', 
+    'ფარში', 'სოკო', 'ლობიო', 'ბრინჯი', 'მაკარონი', 'ნიგოზი', 'ბადრიჯანი', 
+    'ისპანახი', 'ტუნა', 'კომბოსტო', 'სტაფილო', 'ჭარხალი', 'ნაღები', 'ბულგარული', 
+    'მწვანილი', 'ნიორი', 'ხახვი', 'ცომი', 'ხორცი'
+];
+
 let userInventory = [];
 let mealData = [];
 
 /* ==========================================================================
-   2. საწყისი მონაცემთა ბაზა (თუ Firebase ცარიელია)
+   2. პრემიუმ სტრუქტურის მონაცემთა ბაზა (Seed Data)
    ========================================================================== */
 const INITIAL_MEALS = [
-    { name: 'ცეზარი', category: 'salad', tags: ['მსუბუქი', 'ხორციანი'], ingredients: ['ქათამი', 'ყველი'] },
-    { name: 'კატლეტი', category: 'main', tags: ['ხორციანი', 'მძიმე'], ingredients: ['ფარში'], synergyTags: ['გარნირი'], dissonanceTags: ['ცომეული'] },
-    { name: 'პიურე', category: 'garnish', tags: ['გარნირი', 'ვეგეტარიანული'], ingredients: ['კარტოფილი'] },
-    { name: 'შქმერული', category: 'main', tags: ['ხორციანი', 'ნიორი'], ingredients: ['ქათამი'] },
-    { name: 'ბაჟე', category: 'sauce', tags: ['ნიგვზიანი', 'ცივი'], ingredients: [] },
-    { name: 'პასტა ბოლონეზე', category: 'main', tags: ['ხორციანი', 'ცომეული'], ingredients: ['მაკარონი', 'ფარში', 'პომიდორი'] },
-    { name: 'ბერძნული სალათი', category: 'salad', tags: ['მსუბუქი', 'ვეგეტარიანული'], ingredients: ['პომიდორი', 'კიტრი', 'ყველი'] },
-    { name: 'ჩიზქეიქი', category: 'dessert', tags: ['ტკბილი', 'ყველიანი'], ingredients: ['ყველი'] }
+    { 
+        name: 'ცეზარი', category: 'salad', difficulty: 'medium', price: '$$',
+        hasReadyMade: false,
+        time: { active: '15 წთ', total: '20 წთ' },
+        tags: ['მსუბუქი', 'ხორციანი'], ingredients: ['ქათამი', 'ყველი', 'პომიდორი', 'კვერცხი'], 
+        synergyTags: ['წვნიანი', 'გარნირი'], dissonanceTags: [],
+        image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=600&q=80'
+    },
+    { 
+        name: 'ბერძნული სალათი', category: 'salad', difficulty: 'easy', price: '$$', hasReadyMade: false, time: { active: '10 წთ', total: '10 წთ' }, tags: ['მსუბუქი', 'ვეგეტარიანული', 'ცივი'], ingredients: ['პომიდორი', 'კიტრი', 'ყველი', 'ბულგარული'], synergyTags: ['ხორციანი'], dissonanceTags: [], image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&q=80' }, { name: 'ხინკალი', category: 'main', difficulty: 'hard', price: '$$',
+        hasReadyMade: true, priceReady: '$', time: { active: '40 წთ', total: '1 სთ 30 წთ' }, timeReady: { active: '5 წთ', total: '20 წთ' }, tags: ['ცხელი', 'ხორციანი', 'ცომეული', 'მძიმე'], ingredients: ['ფარში', 'ცომი', 'ხახვი'], synergyTags: ['მწნილი'], dissonanceTags: ['ცომეული', 'გარნირი'], image: 'https://images.unsplash.com/photo-1563514936733-41ea3d72666a?w=600&q=80' }, { name: 'სტეიკი', category: 'main', difficulty: 'hard', price: '$$$',
+        hasReadyMade: false,
+        time: { active: '10 წთ', total: '25 წთ' },
+        tags: ['ცხელი', 'ხორციანი', 'პრემიუმ', 'მძიმე'], ingredients: ['ხორცი', 'მწვანილი'], 
+        synergyTags: ['სალათი', 'სოუსი', 'გარნირი'], dissonanceTags: ['წვნიანი'],
+        image: 'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600&q=80'
+    },
+    { 
+        name: 'პასტა ბოლონეზე', category: 'main', difficulty: 'medium', price: '$$', hasReadyMade: false, time: { active: '20 წთ', total: '45 წთ' }, tags: ['ცხელი', 'ხორციანი', 'ცომეული'], ingredients: ['მაკარონი', 'ფარში', 'პომიდორი', 'ხახვი'], synergyTags: ['სალათი'], dissonanceTags: ['ცომეული', 'გარნირი'], image: 'https://images.unsplash.com/photo-1621996316565-e3dbc646d9a9?w=600&q=80' }, { name: 'სოკოს კრემსუპი', category: 'soup', difficulty: 'medium', price: '$$',
+        hasReadyMade: false,
+        time: { active: '15 წთ', total: '35 წთ' },
+        tags: ['ცხელი', 'ვეგეტარიანული', 'კრემოვანი'], ingredients: ['სოკო', 'ნაღები', 'ხახვი'], 
+        synergyTags: ['ცომეული'], dissonanceTags: ['მძიმე'],
+        image: 'https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80'
+    },
+    { 
+        name: 'პიცა მარგარიტა', category: 'bakery', difficulty: 'medium', price: '$$', hasReadyMade: true, priceReady: '$$',
+        time: { active: '20 წთ', total: '1 სთ' },
+        timeReady: { active: '5 წთ', total: '30 წთ' },
+        tags: ['ცხელი', 'ვეგეტარიანული', 'ყველიანი', 'ცომეული'], ingredients: ['ცომი', 'ყველი', 'პომიდორი'], 
+        synergyTags: ['სალათი'], dissonanceTags: ['ცომეული', 'გარნირი'],
+        image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80'
+    },
+    { 
+        name: 'აჭარული ხაჭაპური', category: 'bakery', difficulty: 'hard', price: '$$', hasReadyMade: true, priceReady: '$$',
+        time: { active: '30 წთ', total: '1 სთ 30 წთ' },
+        timeReady: { active: '5 წთ', total: '30 წთ' }, 
+        tags: ['ცხელი', 'ვეგეტარიანული', 'ყველიანი', 'ცომეული', 'მძიმე'], ingredients: ['ცომი', 'ყველი', 'კვერცხი'], 
+        synergyTags: ['ცივი'], dissonanceTags: ['ცომეული', 'ხორციანი'],
+        image: 'https://images.unsplash.com/photo-1626200419188-f1a16e4fffc3?w=600&q=80'
+    },
+    { 
+        name: 'ისპანახის ფხალი', category: 'cold', difficulty: 'medium', price: '$',
+        hasReadyMade: false,
+        time: { active: '20 წთ', total: '40 წთ' },
+        tags: ['ცივი', 'ვეგანური', 'ნიგვზიანი'], ingredients: ['ისპანახი', 'ნიგოზი', 'ნიორი'], 
+        synergyTags: ['გარნირი', 'ცომეული'], dissonanceTags: [],
+        image: 'https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600&q=80'
+    },
+    { 
+        name: 'პიურე ნაღებით', category: 'garnish', difficulty: 'easy', price: '$', hasReadyMade: false, time: { active: '10 წთ', total: '25 წთ' }, tags: ['ცხელი', 'ვეგეტარიანული', 'გარნირი'], ingredients: ['კარტოფილი', 'ნაღები'], synergyTags: ['ხორციანი'], dissonanceTags: ['ცომეული'], image: 'https://images.unsplash.com/photo-1615486171430-802c65910901?w=600&q=80' }, { name: 'გუაკამოლე', category: 'sauce', difficulty: 'easy', price: '$$', hasReadyMade: false, time: { active: '10 წთ', total: '10 წთ' }, tags: ['ცივი', 'ვეგანური', 'მსუბუქი'], ingredients: ['პომიდორი', 'ხახვი', 'ნიორი'], synergyTags: ['ხორციანი', 'ცომეული'], dissonanceTags: [], image: 'https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600&q=80' }, { name: 'ჩიზქეიქი', category: 'dessert', difficulty: 'hard', price: '$$$', hasReadyMade: true, priceReady: '$$$',
+        time: { active: '30 წთ', total: '4 სთ' },
+        timeReady: { active: '0 წთ', total: '15 წთ' },
+        tags: ['ცივი', 'ტკბილი', 'ყველიანი'], ingredients: ['ყველი', 'ნაღები', 'კვერცხი'], 
+        synergyTags: ['მსუბუქი'], dissonanceTags: ['მძიმე'],
+        image: 'https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=600&q=80'
+    }
 ];
 
 /* ==========================================================================
