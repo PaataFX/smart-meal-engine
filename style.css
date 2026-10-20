@@ -1,7 +1,7 @@
 /* ==========================================================================
    CSS ცვლადები - Premium Dark Theme & Fine Dining
    ========================================================================== */
-   :root {
+:root {
     --bg-dark: #0a0a0c;
     --bg-card: rgba(18, 18, 22, 0.75);
     --bg-modal: #16161a;
@@ -9,6 +9,7 @@
     --accent-gold: #D4AF37;
     --accent-gold-hover: #F3E5AB;
     --accent-red: #E57373; 
+    --accent-green: #4CAF50;
     
     --text-main: #EAEAEA;
     --text-muted: #9BA3AF;
@@ -25,11 +26,7 @@
     --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-body);
@@ -44,27 +41,17 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4 {
-    font-family: var(--font-heading);
-    font-weight: 600;
-}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 600; }
 
 /* ==========================================================================
    ნავიგაცია (Header)
    ========================================================================== */
 .top-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background: rgba(10, 10, 12, 0.85);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border-color);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; background: rgba(10, 10, 12, 0.85);
+    backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 100;
 }
-
 .logo h1 { font-size: 1.8rem; color: var(--text-main); }
 .logo span { color: var(--accent-gold); font-style: italic; }
 
@@ -89,12 +76,12 @@ button { font-family: var(--font-body); cursor: pointer; border: none; transitio
     border: 1px solid var(--accent-gold); padding: 10px 24px; border-radius: var(--radius-pill); font-weight: 500;
 }
 .btn-outline:hover { background: rgba(212, 175, 55, 0.15); }
+.btn-small { padding: 8px 16px; font-size: 0.85rem; }
 
 /* ==========================================================================
    კონსტრუქტორი და პრესეტები
    ========================================================================== */
 .container { max-width: 1300px; margin: 0 auto; padding: 40px 5%; }
-
 .section-header { text-align: center; margin-bottom: 35px; }
 .section-header h2 { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 10px; }
 .section-header p { color: var(--text-muted); font-size: 1rem; }
@@ -125,9 +112,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; transitio
 .builder-title { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; text-align: center; }
 
 .counter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px;
 }
 .counter-item {
     display: flex; justify-content: space-between; align-items: center;
@@ -146,13 +131,11 @@ button { font-family: var(--font-body); cursor: pointer; border: none; transitio
 }
 .counter-btn:hover:not(:disabled) { background: var(--accent-gold); color: #111; transform: scale(1.1); }
 .counter-btn:disabled { opacity: 0.3; cursor: not-allowed; }
-
 .counter-input {
     width: 25px; text-align: center; background: transparent; border: none;
     color: var(--accent-gold); font-size: 1.2rem; font-family: var(--font-heading); font-weight: 600;
     pointer-events: none;
 }
-
 .combo-action { text-align: center; margin-top: 20px; }
 
 /* ==========================================================================
@@ -164,9 +147,7 @@ button { font-family: var(--font-body); cursor: pointer; border: none; transitio
     border-bottom: 1px solid var(--border-color); padding-bottom: 20px;
 }
 .inventory-title-group h2 { font-size: 1.8rem; margin: 0; }
-
-.missing-alert { color: var(--accent-red); font-size: 0.9rem; margin-top: 8px; font-weight: 500; }
-.missing-alert.hidden { display: none; }
+.inventory-actions { display: flex; gap: 10px; margin-top: 15px; }
 
 .ingredient-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
 .chip {
@@ -189,22 +170,18 @@ input:checked + .slider:before { transform: translateX(22px); background-color: 
 /* ==========================================================================
    კატეგორიების ბარათები (დინამიური)
    ========================================================================== */
-.categories-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;
-}
+.categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
 
 .category-card {
     position: relative; background-color: var(--bg-card); border: 1px solid var(--border-color);
     border-radius: var(--radius-md); min-height: 240px; overflow: hidden;
-    transition: var(--transition); cursor: pointer;
-    animation: fadeIn 0.5s ease forwards;
+    transition: var(--transition); cursor: pointer; animation: fadeIn 0.5s ease forwards;
 }
 
 .card-bg-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover; background-position: center; transition: filter 0.8s ease;
-    filter: brightness(0) blur(10px); /* ბუნდოვანი თავიდან */
-    z-index: 0;
+    filter: brightness(0) blur(10px); z-index: 0;
 }
 .category-card.has-result .card-bg-overlay { filter: brightness(0.45) blur(0px); }
 .category-card:hover .card-bg-overlay { filter: brightness(0.3) blur(0px); transform: scale(1.05); }
@@ -219,15 +196,9 @@ input:checked + .slider:before { transform: translateX(22px); background-color: 
 
 .card-body { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
 
-/* სლოტ-მანქანის ფანჯარა (ზუსტი სიმაღლით) */
-.slot-machine-window {
-    height: 40px; overflow: hidden; position: relative; width: 100%; display: flex; justify-content: center;
-}
-.slot-reel {
-    display: flex; flex-direction: column; align-items: center; width: 100%;
-    /* ტრანზიცია JS-იდან იმართება, მაგრამ დეფოლტი მაინც იყოს */
-    transition: transform cubic-bezier(0.15, 0.85, 0.15, 1);
-}
+/* სლოტ-მანქანის ფანჯარა */
+.slot-machine-window { height: 40px; overflow: hidden; position: relative; width: 100%; display: flex; justify-content: center; }
+.slot-reel { display: flex; flex-direction: column; align-items: center; width: 100%; transition: transform cubic-bezier(0.15, 0.85, 0.15, 1); }
 .slot-item, .result-placeholder {
     height: 40px; line-height: 40px; font-size: 1.6rem; font-family: var(--font-heading);
     color: var(--accent-gold); text-shadow: 0 2px 10px rgba(0,0,0,0.8); white-space: nowrap; text-align: center;
@@ -260,15 +231,14 @@ dialog::backdrop { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px);
     width: 650px; max-width: 100%; padding: 35px; box-shadow: 0 25px 60px rgba(0,0,0,0.6);
     position: relative; animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 .admin-scroll { max-height: 85vh; overflow-y: auto; }
 .admin-scroll::-webkit-scrollbar { width: 6px; }
 .admin-scroll::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 10px; }
 
 .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
 .modal-header h2 { color: var(--accent-gold); }
-.close-modal, .close-detail-modal { background: transparent; color: var(--text-muted); font-size: 1.6rem; }
-.close-modal:hover, .close-detail-modal:hover { color: var(--text-main); }
+.close-modal, .close-detail-modal, .close-smart-modal { background: transparent; color: var(--text-muted); font-size: 1.6rem; }
+.close-modal:hover, .close-detail-modal:hover, .close-smart-modal:hover { color: var(--text-main); }
 
 /* Forms */
 .form-group { margin-bottom: 20px; }
@@ -283,7 +253,9 @@ input:focus, select:focus { outline: none; border-color: var(--accent-gold); bac
 .security-group { margin-top: 30px; padding-top: 20px; border-top: 1px dashed rgba(255,255,255,0.1); }
 .form-actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 25px; }
 
-/* Meal Detail View */
+/* ==========================================================================
+   Meal Detail View & Smart Ingredients Badges
+   ========================================================================== */
 .meal-detail-content { padding: 0; overflow: hidden; width: 600px; }
 .close-detail-modal { position: absolute; top: 15px; right: 15px; z-index: 10; background: rgba(0,0,0,0.5); width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; }
 .meal-image-header { height: 280px; background-size: cover; background-position: center; position: relative; }
@@ -295,7 +267,30 @@ input:focus, select:focus { outline: none; border-color: var(--accent-gold); bac
 .detail-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
 .tag { background: rgba(212, 175, 55, 0.1); color: var(--accent-gold); padding: 5px 12px; border-radius: 6px; font-size: 0.8rem; }
 .detail-ingredients h4 { margin-bottom: 10px; font-family: var(--font-body); }
-.detail-ingredients p { color: var(--text-muted); font-size: 0.95rem; }
+
+/* ჭკვიანი ინგრედიენტების სია მოდალში */
+.smart-ingredients-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+.ing-badge { padding: 6px 12px; border-radius: 6px; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; }
+.ing-has { background: rgba(76, 175, 80, 0.1); color: var(--accent-green); border: 1px solid rgba(76, 175, 80, 0.3); }
+.ing-missing { background: rgba(229, 115, 115, 0.1); color: var(--accent-red); border: 1px solid rgba(229, 115, 115, 0.3); }
+
+/* ==========================================================================
+   Smart Recipes Modal (რა მოვამზადო?)
+   ========================================================================== */
+.smart-section-title { font-size: 1.1rem; color: var(--text-main); margin: 25px 0 15px 0; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
+.smart-section-title.perfect { color: var(--accent-green); }
+.smart-section-title.close { color: var(--accent-gold); }
+
+.sug-list { display: flex; flex-direction: column; gap: 10px; }
+.recipe-sug-card { 
+    display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.02); 
+    border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: var(--radius-md); 
+    cursor: pointer; transition: var(--transition); 
+}
+.recipe-sug-card:hover { border-color: var(--accent-gold); background: rgba(212, 175, 55, 0.08); transform: translateX(5px); }
+.recipe-sug-img { width: 65px; height: 65px; border-radius: 10px; object-fit: cover; }
+.recipe-sug-info h4 { margin-bottom: 3px; font-size: 1.1rem; color: var(--text-main); }
+.recipe-sug-missing { color: var(--accent-red); font-size: 0.85rem; font-weight: 500; }
 
 /* ==========================================================================
    ანიმაციები
@@ -311,4 +306,6 @@ input:focus, select:focus { outline: none; border-color: var(--accent-gold); bac
     .form-row { flex-direction: column; gap: 0; }
     .container { padding: 20px 5%; }
     .counter-grid { grid-template-columns: 1fr; }
+    .inventory-actions { width: 100%; display: flex; }
+    .inventory-actions button { flex: 1; }
 }
