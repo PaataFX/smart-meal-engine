@@ -58,11 +58,18 @@
             <div class="section-header inventory-header">
                 <div class="inventory-title-group">
                     <h2 id="inventory-title"><i class="fa-solid fa-kitchen-set"></i> რა გვაქვს სახლში?</h2>
-                    <!-- საყიდლების შეტყობინება -->
-                    <p id="missing-ingredients-alert" class="missing-alert hidden" aria-live="polite">
-                        <i class="fa-solid fa-cart-shopping"></i> საყიდელი გაქვს: <span></span>
-                    </p>
+                    
+                    <!-- ახალი: მაცივრის მოქმედების ღილაკები -->
+                    <div class="inventory-actions">
+                        <button id="clear-inventory-btn" class="btn-outline btn-small">
+                            <i class="fa-solid fa-trash-can"></i> გასუფთავება
+                        </button>
+                        <button id="find-meals-btn" class="btn-primary btn-small">
+                            <i class="fa-solid fa-magnifying-glass"></i> რა მოვამზადო?
+                        </button>
+                    </div>
                 </div>
+                
                 <div class="toggle-container">
                     <span class="toggle-label">მაღაზიაში ჩასვლა არ მეზარება</span>
                     <label class="switch" aria-label="მაღაზიის რეჟიმი">
@@ -77,16 +84,16 @@
             </div>
         </section>
 
-        <!-- სექცია 3: შედეგების დაფა (ცარიელია დეფოლტად) -->
+        <!-- სექცია 3: შედეგების დაფა -->
         <section class="results-section">
             <div class="categories-grid" id="categories-container" aria-live="polite">
-                <!-- აქ ჩაჯდება ბარათები მხოლოდ დაგენერირების შემდეგ! აღარ არის ზედმეტი შავი ბლოკები -->
+                <!-- აქ ჩაჯდება ბარათები მხოლოდ დაგენერირების შემდეგ! -->
             </div>
         </section>
 
     </main>
 
-    <!-- ==================== MODALS ==================== -->
+    <!-- ==================== MODALS (<dialog> ტეგები) ==================== -->
 
     <!-- Admin მოდალი (დამატება / რედაქტირება) -->
     <dialog id="admin-modal" class="modal">
@@ -153,12 +160,25 @@
         </div>
     </dialog>
 
-    <!-- კერძის დეტალების მოდალი -->
+    <!-- კერძის დეტალების მოდალი (ჭკვიანი ინგრედიენტებით) -->
     <dialog id="meal-detail-modal" class="modal">
         <div class="modal-content meal-detail-content">
             <button class="close-detail-modal" aria-label="დახურვა"><i class="fa-solid fa-xmark"></i></button>
             <div id="meal-detail-body">
-                <!-- JS ჩაყრის დეტალებს ფოტოთი და გაკლია-ინგრედიენტებით -->
+                <!-- JS ჩაყრის დეტალებს ფოტოთი და მონიშნული/გაკლია-ინგრედიენტებით -->
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Smart Recipes Modal (რა მოვამზადო? - შემოთავაზებები) -->
+    <dialog id="smart-recipes-modal" class="modal">
+        <div class="modal-content admin-scroll">
+            <header class="modal-header">
+                <h2><i class="fa-solid fa-lightbulb" style="color: var(--accent-gold);"></i> შემოთავაზებული კერძები</h2>
+                <button class="close-smart-modal" aria-label="დახურვა"><i class="fa-solid fa-xmark"></i></button>
+            </header>
+            <div id="smart-recipes-body">
+                <!-- JS ჩაყრის კერძებს, რომელთა მომზადებაც ახლავე შეგიძლია -->
             </div>
         </div>
     </dialog>
@@ -182,7 +202,7 @@
                             <div class="result-placeholder"></div>
                         </div>
                     </div>
-                    <!-- შედეგის მეტა მონაცემები ფასი/დრო (დამალულია გაჩერებამდე) -->
+                    <!-- შედეგის მეტა მონაცემები ფასი/დრო -->
                     <div class="meal-meta"></div>
                 </div>
             </div>
@@ -202,6 +222,7 @@
         </div>
     </template>
 
+    <!-- JS მოდულის მიბმა -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
