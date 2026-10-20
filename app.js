@@ -35,7 +35,6 @@ const CATEGORIES = {
 const ADMIN_PIN = '62442';
 const ALL_INGREDIENTS = ['ქათამი', 'კარტოფილი', 'ყველი', 'სულგუნი', 'კვერცხი', 'პომიდორი', 'კიტრი', 'ფარში', 'სოკო', 'ლობიო', 'ბრინჯი', 'მაკარონი', 'ნიგოზი', 'ბადრიჯანი', 'ისპანახი', 'ტუნა', 'კომბოსტო', 'სტაფილო', 'ჭარხალი', 'ნაღები', 'ბულგარული', 'მწვანილი', 'ნიორი', 'ხახვი', 'ცომი', 'ხორცი', 'ბაზილიკი', 'მაიონეზი', 'ზეთი', 'კარაქი'];
 
-// მონაცემების ამოღება LocalStorage-დან
 let userInventory = JSON.parse(localStorage.getItem('smartMealInventory')) || [];
 let favoriteMeals = JSON.parse(localStorage.getItem('smartMealFavs')) || [];
 let historySpins = JSON.parse(localStorage.getItem('smartMealHistory')) || [];
@@ -49,9 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
-/* ==========================================================================
-   2. ბაზის ჩატვირთვა
-   ========================================================================== */
 function loadDataFromFirebase() {
     onSnapshot(mealsCollection, (snapshot) => {
         mealData = [];
@@ -73,7 +69,7 @@ async function seedInitialData() {
 }
 
 /* ==========================================================================
-   3. UI რენდერი (მაცივარი და მთვლელები)
+   2. UI რენდერი (მაცივარი და მთვლელები)
    ========================================================================== */
 function renderIngredients() {
     const container = document.getElementById('ingredient-list');
@@ -128,19 +124,17 @@ function populateAdminDropdown() {
 }
 
 /* ==========================================================================
-   4. ჭკვიანი ფილტრები და რენდომაიზერი
+   3. ჭკვიანი ფილტრები და რენდომაიზერი
    ========================================================================== */
 function getFilteredMeals(category) {
     let filtered = mealData.filter(m => m.category === category);
     
-    // დროის ფილტრი (< 30 წთ ან 1 სთ)
     if(document.getElementById('filter-time').checked) {
         filtered = filtered.filter(m => {
             const timeStr = m.time?.total || "";
             return !timeStr.includes("სთ") || timeStr === "1 სთ"; 
         });
     }
-    // სირთულის ფილტრი (მარტივი ან ნახევარფაბრიკატი)
     if(document.getElementById('filter-easy').checked) {
         filtered = filtered.filter(m => m.difficulty === 'easy' || m.hasReadyMade === true);
     }
@@ -173,7 +167,6 @@ function spinCombo(preset) {
     categoriesToSpin.forEach(cat => {
         const count = request[cat];
         let itemsInCategory = getFilteredMeals(cat);
-        // თუ ფილტრმა ყველა გააქრო, ვიღებთ ჩვეულებრივ სიას (Fallback)
         if(itemsInCategory.length === 0) itemsInCategory = mealData.filter(m => m.category === cat);
 
         for(let i = 0; i < count; i++) {
@@ -187,10 +180,8 @@ function spinCombo(preset) {
         }
     });
 
-    // სინერგიის შემოწმება (მძიმე კომბინაციები)
     checkDissonance(comboResult);
     
-    // ისტორიაში შენახვა და გაზიარების ღილაკის გამოჩენა
     if(comboResult.length > 0) {
         historySpins.unshift({ date: new Date().toLocaleString(), meals: comboResult });
         if(historySpins.length > 5) historySpins.pop(); 
@@ -224,7 +215,7 @@ function checkDissonance(combo) {
 }
 
 /* ==========================================================================
-   5. ბარათების გენერაცია და სლოტ-ანიმაცია
+   4. ბარათების გენერაცია და სლოტ-ანიმაცია
    ========================================================================== */
 function createAndSpinCard(category, finalItem, index, showIndex) {
     const container = document.getElementById('categories-container');
@@ -232,11 +223,10 @@ function createAndSpinCard(category, finalItem, index, showIndex) {
     const cardNode = template.content.cloneNode(true);
     
     const article = cardNode.querySelector('article');
-    article.classList.add('loading'); // ვრთავთ Skeleton-ს
+    article.classList.add('loading'); 
     
     cardNode.querySelector('.category-title').innerHTML = `${CATEGORIES[category].icon} ${CATEGORIES[category].title} ${showIndex ? `<span style="font-size:0.8rem; opacity:0.6">#${index}</span>` : ''}`;
     
-    // რჩეულების (გულის) ღილაკის ლოგიკა
     const favBtn = cardNode.querySelector('.fav-card-btn');
     if(favoriteMeals.some(m => m.id === finalItem.id)) favBtn.classList.add('saved');
     
@@ -278,7 +268,6 @@ function finishCardSetup(article, item, resultEl) {
     article.classList.add('has-result');
     article.querySelector('.card-bg-overlay').style.backgroundImage = `url('${item.image}')`;
     
-    // პროცენტული ბარის დათვლა
     let hasCount = 0;
     if(item.ingredients && item.ingredients.length > 0) {
         item.ingredients.forEach(ing => { if(userInventory.includes(ing)) hasCount++; });
@@ -286,7 +275,6 @@ function finishCardSetup(article, item, resultEl) {
         setTimeout(() => { article.querySelector('.progress-bar-fill').style.width = `${percent}%`; }, 500);
     }
 
-    // თეგების და კალორიების დამატება ბარათზე
     const tagsHtml = (item.tags || []).map(t => `<span class="tag">#${t}</span>`).join('');
     const kcalTag = item.kcal ? `<span class="tag" style="color:#FFB74D; border-color:#FFB74D"><i class="fa-solid fa-fire"></i> ${item.kcal}</span>` : '';
     
@@ -297,7 +285,6 @@ function finishCardSetup(article, item, resultEl) {
     `;
     article.querySelector('.meal-meta-container').classList.add('visible');
     
-    // ღილაკების Event-ები
     article.onclick = (e) => { if(!e.target.closest('button')) openDetailModal(item); };
     article.querySelector('.remove-card-btn').onclick = (e) => { e.stopPropagation(); article.remove(); };
     article.querySelector('.btn-spin-single').onclick = (e) => {
@@ -312,7 +299,7 @@ function finishCardSetup(article, item, resultEl) {
 }
 
 /* ==========================================================================
-   6. მოდალები და ძიება ("რა მოვამზადო")
+   5. მოდალები და "რა მოვამზადო" (Reverse Search)
    ========================================================================== */
 function openDetailModal(item) {
     const modal = document.getElementById('meal-detail-modal');
@@ -360,34 +347,81 @@ function openDetailModal(item) {
     }
 }
 
+// "რა მოვამზადო" - Reverse Recipe Search
 function findMatchingMeals() {
     const storeToggle = document.getElementById('store-toggle').checked;
     const body = document.getElementById('smart-recipes-body');
     const modal = document.getElementById('smart-recipes-modal');
     
+    if (userInventory.length === 0) {
+        alert("გთხოვთ, მონიშნოთ მინიმუმ 1 ინგრედიენტი!");
+        return;
+    }
+
     let perfectMatches = [];
     let closeMatches = [];
 
     mealData.forEach(meal => {
         if (!meal.ingredients || meal.ingredients.length === 0) return;
+        
+        // ვითვლით რა აკლია
         const missing = meal.ingredients.filter(ing => !userInventory.includes(ing));
+        // ვითვლით რა გვაქვს
+        const has = meal.ingredients.filter(ing => userInventory.includes(ing));
+        
+        // პროცენტის დათვლა
+        const percent = Math.round((has.length / meal.ingredients.length) * 100);
 
-        if (missing.length === 0) perfectMatches.push(meal);
-        else if (missing.length <= 2 && storeToggle) closeMatches.push({ meal, missing });
+        // თუ 100% გვაქვს, იდეალურია. 
+        if (missing.length === 0) {
+            perfectMatches.push({ ...meal, percent });
+        } 
+        // თუ მაღაზიაში ჩასვლა არ გვეზარება და 1-2 გვაკლია (ან >50% გვაქვს)
+        else if (missing.length <= 2 && storeToggle && has.length > 0) {
+            closeMatches.push({ meal, missing, percent });
+        }
     });
+
+    // სორტირება პროცენტულობის მიხედვით (კლებადობით)
+    perfectMatches.sort((a, b) => b.percent - a.percent);
+    closeMatches.sort((a, b) => b.percent - a.percent);
 
     let html = '';
     if (perfectMatches.length === 0 && closeMatches.length === 0) {
-        html = `<p style="color: var(--text-muted); text-align: center; margin-top: 20px;">თქვენს მაცივარში არსებული ინგრედიენტებით სრულფასოვანი კერძი ვერ მოიძებნა.</p>`;
+        html = `<p style="color: var(--text-muted); text-align: center; margin-top: 20px;">ამ ინგრედიენტებით კერძი ვერ მოიძებნა. სცადეთ სხვების დამატება.</p>`;
     } else {
         if (perfectMatches.length > 0) {
             html += `<h3 class="smart-section-title perfect"><i class="fa-solid fa-circle-check"></i> ახლავე შეგიძლიათ მოამზადოთ:</h3><div class="sug-list">`;
-            perfectMatches.forEach(m => { html += `<div class="recipe-sug-card" data-id="${m.id}"><img src="${m.image}" class="recipe-sug-img"><div class="recipe-sug-info"><h4>${m.name}</h4><span style="color:var(--text-muted); font-size:0.85rem;">ყველა ინგრედიენტი გაქვთ!</span></div></div>`; });
+            perfectMatches.forEach(m => { 
+                html += `
+                <div class="recipe-sug-card" data-id="${m.id}">
+                    <img src="${m.image}" class="recipe-sug-img">
+                    <div class="recipe-sug-info" style="width: 100%;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <h4>${m.name}</h4>
+                            <span style="color:var(--accent-green); font-size:0.85rem; font-weight:bold;">${m.percent}%</span>
+                        </div>
+                        <span style="color:var(--text-muted); font-size:0.85rem;">ყველა ინგრედიენტი გაქვთ!</span>
+                    </div>
+                </div>`; 
+            });
             html += `</div>`;
         }
         if (storeToggle && closeMatches.length > 0) {
             html += `<h3 class="smart-section-title close"><i class="fa-solid fa-person-walking"></i> აკლია 1-2 ინგრედიენტი:</h3><div class="sug-list">`;
-            closeMatches.forEach(item => { html += `<div class="recipe-sug-card" data-id="${item.meal.id}"><img src="${item.meal.image}" class="recipe-sug-img"><div class="recipe-sug-info"><h4>${item.meal.name}</h4><span class="recipe-sug-missing">საყიდელია: ${item.missing.join(', ')}</span></div></div>`; });
+            closeMatches.forEach(item => { 
+                html += `
+                <div class="recipe-sug-card" data-id="${item.meal.id}">
+                    <img src="${item.meal.image}" class="recipe-sug-img">
+                    <div class="recipe-sug-info" style="width: 100%;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <h4>${item.meal.name}</h4>
+                            <span style="color:var(--accent-warning); font-size:0.85rem; font-weight:bold;">${item.percent}%</span>
+                        </div>
+                        <span class="recipe-sug-missing">საყიდელია: ${item.missing.join(', ')}</span>
+                    </div>
+                </div>`; 
+            });
             html += `</div>`;
         }
     }
@@ -424,10 +458,9 @@ function showListModal(title, itemsArray) {
 }
 
 /* ==========================================================================
-   7. Event Listeners 
+   6. Event Listeners 
    ========================================================================== */
 function setupEventListeners() {
-    // Space კლავიშით დატრიალება
     document.addEventListener('keydown', (e) => {
         if(e.code === 'Space' && !document.querySelector('dialog[open]')) {
             e.preventDefault();
@@ -435,7 +468,6 @@ function setupEventListeners() {
         }
     });
 
-    // მოდალების გარეთ (Click-outside) დახურვა
     document.querySelectorAll('dialog').forEach(dialog => {
         dialog.addEventListener('click', (event) => {
             const rect = dialog.getBoundingClientRect();
@@ -445,6 +477,7 @@ function setupEventListeners() {
         });
     });
 
+    // "რა მოვამზადო?" ღილაკის მიბმა
     document.getElementById('find-meals-btn').addEventListener('click', findMatchingMeals);
     
     document.getElementById('clear-inventory-btn').addEventListener('click', () => {
