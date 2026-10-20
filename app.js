@@ -1,49 +1,30 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, writeBatch, doc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAYRhbFU5iw7TmUomzlipDngxvTACOVU80",
-    authDomain: "smart-meal-engine.firebaseapp.com",
-    projectId: "smart-meal-engine",
-    storageBucket: "smart-meal-engine.firebasestorage.app",
-    messagingSenderId: "408030080120",
-    appId: "1:408030080120:web:424c76cdbdc367f732918d"
-};
-
+const firebaseConfig = { apiKey: "AIzaSyAYRhbFU5iw7TmUomzlipDngxvTACOVU80", authDomain: "smart-meal-engine.firebaseapp.com", projectId: "smart-meal-engine" };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const mealsCollection = collection(db, "meals");
 
-const CATEGORIES = {
-    main: { icon: '🍲', title: 'ძირითადი კერძები' },
-    soup: { icon: '🥣', title: 'წვნიანები' },
-    salad: { icon: '🥗', title: 'სალათები' },
-    cold: { icon: '🌿', title: 'ფხალეული და ცივი' },
-    bakery: { icon: '🥐', title: 'ცომეული' },
-    garnish: { icon: '🍚', title: 'გარნირი' },
-    sauce: { icon: '🥣', title: 'საწებელი' },
-    dessert: { icon: '🍰', title: 'დესერტები' },
-    extra: { icon: '🧀', title: 'დანამატი' }
-};
-
-const ADMIN_PIN = '62442';
+const CATEGORIES = { main: { icon: '🍲', title: 'ძირითადი' }, soup: { icon: '🥣', title: 'წვნიანი' }, salad: { icon: '🥗', title: 'სალათი' }, cold: { icon: '🌿', title: 'ფხალეული' }, bakery: { icon: '🥐', title: 'ცომეული' }, garnish: { icon: '🍚', title: 'გარნირი' }, sauce: { icon: '🥣', title: 'საწებელი' }, dessert: { icon: '🍰', title: 'დესერტი' }, extra: { icon: '🧀', title: 'დანამატი' } };
 const ALL_INGREDIENTS = ['ქათამი', 'კარტოფილი', 'ყველი', 'სულგუნი', 'კვერცხი', 'პომიდორი', 'კიტრი', 'ფარში', 'სოკო', 'ლობიო', 'ბრინჯი', 'მაკარონი', 'ნიგოზი', 'ბადრიჯანი', 'ისპანახი', 'ტუნა', 'კომბოსტო', 'სტაფილო', 'ჭარხალი', 'ნაღები', 'ბულგარული', 'მწვანილი', 'ნიორი', 'ხახვი', 'ცომი', 'ხორცი', 'ბაზილიკი', 'მაიონეზი', 'ზეთი', 'კარაქი'];
 
 let userInventory = JSON.parse(localStorage.getItem('smartMealInventory')) || [];
+let favoriteMeals = JSON.parse(localStorage.getItem('smartMealFavs')) || [];
+let historySpins = JSON.parse(localStorage.getItem('smartMealHistory')) || [];
 let mealData = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     loadDataFromFirebase();
     renderIngredients();
     renderCustomCounters();
-    populateAdminDropdown();
     setupEventListeners();
 });
 
 function loadDataFromFirebase() {
     onSnapshot(mealsCollection, (snapshot) => {
         mealData = [];
-        snapshot.forEach((doc) => { mealData.push({ id: doc.id, ...doc.data() }); });
+        snapshot.forEach(doc => mealData.push({ id: doc.id, ...doc.data() }));
         if (mealData.length === 0) seedInitialData();
     });
 }
@@ -51,12 +32,11 @@ function loadDataFromFirebase() {
 async function seedInitialData() {
     try {
         const response = await fetch('meals.json');
-        if (!response.ok) throw new Error("meals.json ვერ მოიძებნა!");
         const initialMeals = await response.json();
         const batch = writeBatch(db);
-        initialMeals.forEach((meal) => { batch.set(doc(collection(db, "meals")), meal); });
+        initialMeals.forEach(meal => batch.set(doc(collection(db, "meals")), meal));
         await batch.commit();
-    } catch (error) { console.error("შეცდომა JSON-ის ატვირთვისას:", error); }
+    } catch (e) { console.error("Error loading JSON:", e); }
 }
 
 function renderIngredients() {
@@ -66,150 +46,98 @@ function renderIngredients() {
         const chip = document.createElement('span');
         chip.className = `chip ${userInventory.includes(ing) ? 'active' : ''}`;
         chip.textContent = ing;
-        chip.onclick = () => {
-            toggleIngredient(ing, chip);
-            localStorage.setItem('smartMealInventory', JSON.stringify(userInventory));
-        };
+        chip.onclick = () => { toggleIngredient(ing, chip); localStorage.setItem('smartMealInventory', JSON.stringify(userInventory)); };
         container.appendChild(chip);
     });
 }
 
-function toggleIngredient(ing, element) {
-    if (userInventory.includes(ing)) {
-        userInventory = userInventory.filter(i => i !== ing);
-        element.classList.remove('active');
-    } else {
-        userInventory.push(ing);
-        element.classList.add('active');
-    }
+function toggleIngredient(ing, el) {
+    if (userInventory.includes(ing)) { userInventory = userInventory.filter(i => i !== ing); el.classList.remove('active'); }
+    else { userInventory.push(ing); el.classList.add('active'); }
 }
 
-function findMatchingMeals() {
-    const storeToggle = document.getElementById('store-toggle').checked;
-    const body = document.getElementById('smart-recipes-body');
-    const modal = document.getElementById('smart-recipes-modal');
+// === ახალი ფილტრები ===
+function getFilteredMeals(category) {
+    let filtered = mealData.filter(m => m.category === category);
     
-    let perfectMatches = [];
-    let closeMatches = [];
-
-    mealData.forEach(meal => {
-        if (!meal.ingredients || meal.ingredients.length === 0) return;
-        const missing = meal.ingredients.filter(ing => !userInventory.includes(ing));
-
-        if (missing.length === 0) {
-            perfectMatches.push(meal);
-        } else if (missing.length <= 2 && storeToggle) {
-            closeMatches.push({ meal, missing });
-        }
-    });
-
-    let html = '';
-    if (perfectMatches.length === 0 && closeMatches.length === 0) {
-        html = `<p style="color: var(--text-muted); text-align: center; margin-top: 20px;">თქვენს მაცივარში არსებული ინგრედიენტებით სრულფასოვანი კერძი ვერ მოიძებნა.</p>`;
-    } else {
-        if (perfectMatches.length > 0) {
-            html += `<h3 class="smart-section-title perfect"><i class="fa-solid fa-circle-check"></i> ახლავე შეგიძლიათ მოამზადოთ:</h3><div class="sug-list">`;
-            perfectMatches.forEach(m => {
-                html += `<div class="recipe-sug-card" data-id="${m.id}"><img src="${m.image}" class="recipe-sug-img"><div class="recipe-sug-info"><h4>${m.name}</h4><span style="color:var(--text-muted); font-size:0.85rem;">ყველა ინგრედიენტი გაქვთ!</span></div></div>`;
-            });
-            html += `</div>`;
-        }
-        if (storeToggle && closeMatches.length > 0) {
-            html += `<h3 class="smart-section-title close"><i class="fa-solid fa-person-walking"></i> აკლია 1-2 ინგრედიენტი:</h3><div class="sug-list">`;
-            closeMatches.forEach(item => {
-                html += `<div class="recipe-sug-card" data-id="${item.meal.id}"><img src="${item.meal.image}" class="recipe-sug-img"><div class="recipe-sug-info"><h4>${item.meal.name}</h4><span class="recipe-sug-missing">საყიდელია: ${item.missing.join(', ')}</span></div></div>`;
-            });
-            html += `</div>`;
-        }
-    }
-
-    body.innerHTML = html;
-    modal.showModal();
-
-    body.querySelectorAll('.recipe-sug-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const meal = mealData.find(m => m.id === card.dataset.id);
-            if(meal) openDetailModal(meal);
+    // დროის ფილტრი
+    if(document.getElementById('filter-time').checked) {
+        filtered = filtered.filter(m => {
+            const timeStr = m.time?.total || "";
+            return !timeStr.includes("სთ") || timeStr === "1 სთ"; // უხეში ლოგიკა სწრაფისთვის
         });
-    });
-}
-
-function renderCustomCounters() {
-    const container = document.getElementById('custom-counters-container');
-    const template = document.getElementById('counter-template');
-    if(!container || !template) return;
-    
-    container.innerHTML = '';
-    for (const [key, data] of Object.entries(CATEGORIES)) {
-        const node = template.content.cloneNode(true);
-        const itemDiv = node.querySelector('.counter-item');
-        const label = node.querySelector('.counter-label');
-        const input = node.querySelector('.counter-input');
-        
-        itemDiv.dataset.category = key;
-        label.innerHTML = `${data.icon} ${data.title}`;
-        if(key === 'main' || key === 'salad') input.value = 1;
-
-        node.querySelector('.minus').onclick = () => { if(input.value > 0) input.value = parseInt(input.value) - 1; };
-        node.querySelector('.plus').onclick = () => { if(input.value < 5) input.value = parseInt(input.value) + 1; };
-        container.appendChild(node);
     }
-}
-
-function populateAdminDropdown() {
-    const select = document.getElementById('dish-category');
-    select.innerHTML = '';
-    for (const [key, data] of Object.entries(CATEGORIES)) { select.innerHTML += `<option value="${key}">${data.icon} ${data.title}</option>`; }
+    // სირთულის ფილტრი
+    if(document.getElementById('filter-easy').checked) {
+        filtered = filtered.filter(m => m.difficulty === 'easy' || m.hasReadyMade === true);
+    }
+    return filtered;
 }
 
 function spinCombo(preset) {
     const container = document.getElementById('categories-container');
     container.innerHTML = ''; 
+    document.getElementById('dissonance-alert-container').innerHTML = '';
 
     let request = {};
     if (preset === 'quick') request = { main: 1, salad: 1 };
     else if (preset === 'date') request = { main: 1, salad: 1, dessert: 1, extra: 1 };
-    else if (preset === 'feast') request = { main: 2, soup: 1, salad: 2, cold: 1, garnish: 1, sauce: 1, dessert: 1 };
+    else if (preset === 'feast') request = { main: 2, salad: 2, cold: 1, garnish: 1, sauce: 1, dessert: 1 };
     else if (preset === 'custom') {
         document.querySelectorAll('.counter-item').forEach(item => {
-            const cat = item.dataset.category;
             const count = parseInt(item.querySelector('.counter-input').value);
-            if(count > 0) request[cat] = count;
+            if(count > 0) request[item.dataset.category] = count;
         });
-        if(Object.keys(request).length === 0) return alert("გთხოვთ, მიუთითოთ მინიმუმ 1 კერძის რაოდენობა (+ ღილაკით)");
+        if(Object.keys(request).length === 0) return alert("მიუთითეთ მინიმუმ 1 რაოდენობა");
     }
 
     let usedMeals = new Set();
-    let anchorTags = [];
+    let comboResult = [];
     const categoriesToSpin = Object.keys(request).sort((a, b) => a === 'main' ? -1 : 1);
 
     categoriesToSpin.forEach(cat => {
         const count = request[cat];
-        const itemsInCategory = mealData.filter(m => m.category === cat);
-        
+        let itemsInCategory = getFilteredMeals(cat);
+        if(itemsInCategory.length === 0) itemsInCategory = mealData.filter(m => m.category === cat); // Fallback
+
         for(let i = 0; i < count; i++) {
             let available = itemsInCategory.filter(m => !usedMeals.has(m.id));
-            if(available.length === 0) available = itemsInCategory; 
-
-            let weighted = [];
-            available.forEach(item => {
-                let weight = 10;
-                let tags = item.tags || [];
-                if (anchorTags.includes('ცომეული') && tags.includes('ცომეული')) weight = 1;
-                if (anchorTags.includes('ხორციანი') && tags.includes('ხორციანი')) weight = 2;
-                if (anchorTags.includes('მძიმე') && tags.includes('მსუბუქი')) weight = 30;
-                for (let w = 0; w < weight; w++) weighted.push(item);
-            });
-
-            if (weighted.length === 0) continue;
+            if(available.length === 0) available = itemsInCategory;
             
-            const pick = weighted[Math.floor(Math.random() * weighted.length)];
-            usedMeals.add(pick.id); 
-            
-            if(cat === 'main' && anchorTags.length === 0) anchorTags = pick.tags || [];
-            createAndSpinCard(cat, pick, i + 1, count > 1); 
+            const pick = available[Math.floor(Math.random() * available.length)];
+            usedMeals.add(pick.id);
+            comboResult.push(pick);
+            createAndSpinCard(cat, pick, i + 1, count > 1);
         }
     });
+
+    // სინერგიის შემოწმება
+    checkDissonance(comboResult);
+    
+    // ისტორიაში შენახვა
+    if(comboResult.length > 0) {
+        historySpins.unshift({ date: new Date().toLocaleString(), meals: comboResult });
+        if(historySpins.length > 5) historySpins.pop();
+        localStorage.setItem('smartMealHistory', JSON.stringify(historySpins));
+        
+        document.getElementById('share-menu-container').classList.remove('hidden');
+        document.getElementById('share-menu-btn').onclick = () => {
+            const text = "დღევანდელი მენიუ:\n" + comboResult.map(m => `🍲 ${m.name}`).join('\n');
+            navigator.clipboard.writeText(text);
+            alert("მენიუ დაკოპირდა გასაზიარებლად!");
+        };
+    }
+}
+
+function checkDissonance(combo) {
+    let allSynergies = combo.flatMap(m => m.synergyTags || []);
+    let msg = "";
+    if(allSynergies.includes("თევზი") && allSynergies.includes("რძე")) msg = "⚠️ ყურადღება: თევზი და რძის პროდუქტები კუჭისთვის მძიმე კომბინაციაა.";
+    else if(allSynergies.filter(t => t === "მძიმე").length > 2) msg = "⚠️ ყურადღება: შერჩეულია რამდენიმე მძიმე კერძი, რეკომენდებულია მსუბუქი სალათის დამატება.";
+    
+    if(msg) {
+        document.getElementById('dissonance-alert-container').innerHTML = `<div class="dissonance-alert"><i class="fa-solid fa-triangle-exclamation"></i> ${msg}</div>`;
+    }
 }
 
 function createAndSpinCard(category, finalItem, index, showIndex) {
@@ -218,150 +146,178 @@ function createAndSpinCard(category, finalItem, index, showIndex) {
     const cardNode = template.content.cloneNode(true);
     
     const article = cardNode.querySelector('article');
-    const titleEl = cardNode.querySelector('.category-title');
-    const resultEl = cardNode.querySelector('.result-placeholder');
-    const metaEl = cardNode.querySelector('.meal-meta');
-    const bgOverlay = cardNode.querySelector('.card-bg-overlay');
+    article.classList.add('loading'); // Skeleton on
     
-    const catData = CATEGORIES[category];
-    titleEl.innerHTML = `${catData.icon} ${catData.title} ${showIndex ? `<span style="font-size:0.8rem; opacity:0.6">#${index}</span>` : ''}`;
+    cardNode.querySelector('.category-title').innerHTML = `${CATEGORIES[category].icon} ${CATEGORIES[category].title}`;
     
-    container.appendChild(cardNode);
-    runSlotAnimation(category, article, finalItem, resultEl, metaEl, bgOverlay);
-
-    cardNode.querySelector('.remove-card-btn').addEventListener('click', (e) => { e.stopPropagation(); article.remove(); });
-    cardNode.querySelector('.btn-spin-single').addEventListener('click', (e) => {
+    const favBtn = cardNode.querySelector('.fav-card-btn');
+    if(favoriteMeals.some(m => m.id === finalItem.id)) favBtn.classList.add('saved');
+    favBtn.onclick = (e) => {
         e.stopPropagation();
-        article.classList.remove('has-result');
-        bgOverlay.style.backgroundImage = 'none';
-        metaEl.classList.remove('visible');
-        
-        const available = mealData.filter(m => m.category === category);
-        const newPick = available[Math.floor(Math.random() * available.length)];
-        runSlotAnimation(category, article, newPick, resultEl, metaEl, bgOverlay);
-    });
+        if(favBtn.classList.contains('saved')) {
+            favoriteMeals = favoriteMeals.filter(m => m.id !== finalItem.id);
+            favBtn.classList.remove('saved');
+        } else {
+            favoriteMeals.push(finalItem);
+            favBtn.classList.add('saved');
+        }
+        localStorage.setItem('smartMealFavs', JSON.stringify(favoriteMeals));
+    };
+
+    container.appendChild(cardNode);
+    runSlotAnimation(category, article, finalItem);
 }
 
-function runSlotAnimation(category, article, finalItem, resultEl, metaEl, bgOverlay) {
+function runSlotAnimation(category, article, finalItem) {
+    const resultEl = article.querySelector('.result-placeholder');
     const allNames = mealData.filter(m => m.category === category).map(m => m.name);
-    if(allNames.length === 0) return resultEl.textContent = 'ცარიელია';
+    if(allNames.length === 0) return;
 
     let ticks = 0;
-    const maxTicks = 15 + Math.floor(Math.random() * 10); 
-    
     const interval = setInterval(() => {
         resultEl.textContent = allNames[Math.floor(Math.random() * allNames.length)];
         ticks++;
-        if(ticks >= maxTicks) {
+        if(ticks >= 20) {
             clearInterval(interval);
-            resultEl.textContent = finalItem.name;
-            article.classList.add('has-result');
-            if(finalItem.image) bgOverlay.style.backgroundImage = `url('${finalItem.image}')`;
-            
-            metaEl.innerHTML = `<span><i class="fa-solid fa-clock"></i> ${finalItem.time?.active || '15 წთ'}</span>
-                                <span><i class="fa-solid fa-wallet"></i> ${finalItem.price || '$$'}</span>`;
-            metaEl.classList.add('visible');
-            article.onclick = (e) => { if(!e.target.closest('button')) openDetailModal(finalItem); };
+            finishCardSetup(article, finalItem, resultEl);
         }
-    }, 60); 
+    }, 50); 
 }
 
-// ახალი: ჭკვიანი ინგრედიენტების ჩვენება მოდალში
+function finishCardSetup(article, item, resultEl) {
+    resultEl.textContent = item.name;
+    article.classList.remove('loading');
+    article.classList.add('has-result');
+    article.querySelector('.card-bg-overlay').style.backgroundImage = `url('${item.image}')`;
+    
+    // პროცენტული ბარის დათვლა
+    let hasCount = 0;
+    if(item.ingredients && item.ingredients.length > 0) {
+        item.ingredients.forEach(ing => { if(userInventory.includes(ing)) hasCount++; });
+        const percent = Math.round((hasCount / item.ingredients.length) * 100);
+        setTimeout(() => { article.querySelector('.progress-bar-fill').style.width = `${percent}%`; }, 500);
+    }
+
+    const tagsHtml = (item.tags || []).map(t => `<span class="tag">#${t}</span>`).join('');
+    // კალორიების დამატება თეგად
+    const kcalTag = item.kcal ? `<span class="tag" style="color:#FFB74D; border-color:#FFB74D"><i class="fa-solid fa-fire"></i> ${item.kcal}</span>` : '';
+    
+    article.querySelector('.card-tags').innerHTML = tagsHtml + kcalTag;
+    article.querySelector('.meal-meta').innerHTML = `<span><i class="fa-solid fa-clock"></i> ${item.time?.total || ''}</span>`;
+    article.querySelector('.meal-meta-container').classList.add('visible');
+    
+    article.onclick = (e) => { if(!e.target.closest('button')) openDetailModal(item); };
+    article.querySelector('.remove-card-btn').onclick = (e) => { e.stopPropagation(); article.remove(); };
+    article.querySelector('.btn-spin-single').onclick = (e) => {
+        e.stopPropagation();
+        article.classList.remove('has-result');
+        article.classList.add('loading');
+        article.querySelector('.meal-meta-container').classList.remove('visible');
+        article.querySelector('.progress-bar-fill').style.width = '0%';
+        const available = getFilteredMeals(item.category);
+        runSlotAnimation(item.category, article, available[Math.floor(Math.random() * available.length)]);
+    };
+}
+
+// =================== Modals & Helpers ===================
+
 function openDetailModal(item) {
     const modal = document.getElementById('meal-detail-modal');
     const body = document.getElementById('meal-detail-body');
-    const tagsHtml = (item.tags || []).map(t => `<span class="tag">#${t}</span>`).join('');
+    const storeToggle = document.getElementById('store-toggle').checked;
     
-    let missingIngredients = item.ingredients ? item.ingredients.filter(ing => !userInventory.includes(ing)) : [];
-    let missingHtml = '';
-    const storeToggle = document.getElementById('store-toggle');
+    let missing = item.ingredients ? item.ingredients.filter(ing => !userInventory.includes(ing)) : [];
     
-    if (missingIngredients.length > 0 && (!storeToggle || !storeToggle.checked)) {
-        missingHtml = `
-            <div style="background: rgba(229, 115, 115, 0.1); border-left: 4px solid var(--accent-red); padding: 10px 15px; margin-top: 20px; border-radius: 4px;">
-                <p style="color: var(--accent-red); margin: 0; font-size: 0.95rem;">
-                    <i class="fa-solid fa-cart-shopping"></i> <strong>საყიდელი გაქვს:</strong> ${missingIngredients.join(', ')}
-                </p>
-            </div>`;
-    }
+    let shopBtn = missing.length > 0 ? `<button class="btn-outline btn-small" onclick="navigator.clipboard.writeText('საყიდელია: ${missing.join(', ')}'); alert('სია დაკოპირდა!')"><i class="fa-solid fa-copy"></i> სიის კოპირება</button>` : '';
 
-    // ინგრედიენტების დინამიური ლისტი
-    let smartIngredientsHtml = '';
-    if (item.ingredients && item.ingredients.length > 0) {
-        const badgesHtml = item.ingredients.map(ing => {
-            const hasIng = userInventory.includes(ing);
-            if(hasIng) {
-                return `<span class="ing-badge ing-has"><i class="fa-solid fa-check"></i> ${ing}</span>`;
-            } else {
-                return `<span class="ing-badge ing-missing"><i class="fa-solid fa-xmark"></i> ${ing}</span>`;
-            }
-        }).join('');
-        
-        smartIngredientsHtml = `
-            <div class="detail-ingredients">
-                <h4><i class="fa-solid fa-basket-shopping"></i> ინგრედიენტები:</h4>
-                <div class="smart-ingredients-list">
-                    ${badgesHtml}
-                </div>
-            </div>`;
-    }
+    let badges = (item.ingredients || []).map(ing => 
+        userInventory.includes(ing) ? `<span class="ing-badge ing-has"><i class="fa-solid fa-check"></i> ${ing}</span>` 
+                                    : `<span class="ing-badge ing-missing"><i class="fa-solid fa-xmark"></i> ${ing}</span>`
+    ).join('');
 
     body.innerHTML = `
-        <div class="meal-image-header" style="background-image: url('${item.image || ''}')"><div class="meal-image-overlay"></div></div>
+        <div class="meal-image-header" style="background-image: url('${item.image}')"><div class="meal-image-overlay"></div></div>
         <div class="meal-detail-body">
-            <h2>${item.name}</h2>
-            <div class="detail-meta">
-                <span><i class="fa-solid fa-clock"></i> ${item.time?.active || '-'} / ${item.time?.total || '-'}</span>
-                <span><i class="fa-solid fa-fire"></i> ${item.difficulty === 'easy' ? 'მარტივი' : item.difficulty === 'hard' ? 'რთული' : 'საშუალო'}</span>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>${item.name}</h2>
+                ${shopBtn}
             </div>
-            <div class="detail-tags">${tagsHtml}</div>
-            ${smartIngredientsHtml}
-            ${missingHtml}
+            <div class="detail-meta">
+                <span><i class="fa-solid fa-clock"></i> ${item.time?.total || '-'}</span>
+                <span><i class="fa-solid fa-fire"></i> ${item.kcal || '-'}</span>
+            </div>
+            ${badges ? `<div class="smart-ingredients-list">${badges}</div>` : ''}
         </div>`;
     modal.showModal();
 }
 
-function setupEventListeners() {
-    document.getElementById('find-meals-btn').addEventListener('click', findMatchingMeals);
+function showListModal(title, itemsArray) {
+    const modal = document.getElementById('list-modal');
+    document.getElementById('list-modal-title').textContent = title;
+    let html = '<div class="sug-list">';
+    if(itemsArray.length === 0) html += '<p style="color:var(--text-muted); text-align:center;">სია ცარიელია</p>';
     
-    document.getElementById('clear-inventory-btn').addEventListener('click', () => {
-        userInventory = [];
-        localStorage.removeItem('smartMealInventory');
-        renderIngredients();
+    itemsArray.forEach(m => {
+        html += `<div class="recipe-sug-card" data-id="${m.id}"><img src="${m.image}" class="recipe-sug-img"><div class="recipe-sug-info"><h4>${m.name}</h4><span style="color:var(--text-muted); font-size:0.85rem;"><i class="fa-solid fa-clock"></i> ${m.time?.total}</span></div></div>`;
+    });
+    html += '</div>';
+    document.getElementById('list-modal-body').innerHTML = html;
+    modal.showModal();
+
+    document.querySelectorAll('.recipe-sug-card').forEach(card => {
+        card.onclick = () => { modal.close(); openDetailModal(mealData.find(m => m.id === card.dataset.id)); };
+    });
+}
+
+function renderCustomCounters() {
+    const container = document.getElementById('custom-counters-container');
+    const template = document.getElementById('counter-template');
+    if(!container || !template) return;
+    for (const [key, data] of Object.entries(CATEGORIES)) {
+        const node = template.content.cloneNode(true);
+        node.querySelector('.counter-item').dataset.category = key;
+        node.querySelector('.counter-label').innerHTML = `${data.icon} ${data.title}`;
+        if(key === 'main' || key === 'salad') node.querySelector('.counter-input').value = 1;
+        node.querySelector('.minus').onclick = (e) => { const inp = e.target.closest('.counter-controls').querySelector('input'); if(inp.value > 0) inp.value--; };
+        node.querySelector('.plus').onclick = (e) => { const inp = e.target.closest('.counter-controls').querySelector('input'); if(inp.value < 5) inp.value++; };
+        container.appendChild(node);
+    }
+}
+
+function setupEventListeners() {
+    // Keyboard Space key for spin
+    document.addEventListener('keydown', (e) => {
+        if(e.code === 'Space' && !document.querySelector('dialog[open]')) {
+            e.preventDefault();
+            document.getElementById('spin-combo-btn').click();
+        }
+    });
+
+    // Close Modals on click outside
+    document.querySelectorAll('dialog').forEach(dialog => {
+        dialog.addEventListener('click', (e) => {
+            const rect = dialog.getBoundingClientRect();
+            if (e.clientY < rect.top || e.clientY > rect.top + rect.height || e.clientX < rect.left || e.clientX > rect.left + rect.width) dialog.close();
+        });
+        const closeBtn = dialog.querySelector('.close-modal, .close-detail-modal, .close-smart-modal');
+        if(closeBtn) closeBtn.onclick = () => dialog.close();
     });
 
     document.querySelectorAll('.preset-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.onclick = (e) => {
             document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
             e.target.classList.add('active');
-            
-            const customPanel = document.getElementById('custom-combo-builder');
-            if(e.target.dataset.preset === 'custom') customPanel.classList.remove('hidden');
-            else customPanel.classList.add('hidden');
-        });
-    });
-
-    document.getElementById('spin-combo-btn').addEventListener('click', () => {
-        spinCombo(document.querySelector('.preset-btn.active').dataset.preset);
-    });
-
-    const adminModal = document.getElementById('admin-modal');
-    document.getElementById('admin-btn').addEventListener('click', () => adminModal.showModal());
-    document.querySelectorAll('.close-modal, .cancel-btn').forEach(btn => { btn.addEventListener('click', () => adminModal.close()); });
-    
-    document.querySelector('.close-detail-modal').addEventListener('click', () => document.getElementById('meal-detail-modal').close());
-    document.querySelector('.close-smart-modal').addEventListener('click', () => document.getElementById('smart-recipes-modal').close());
-
-    document.getElementById('admin-form').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (document.getElementById('admin-pin').value !== ADMIN_PIN) return alert('❌ არასწორი PIN კოდი!');
-        
-        const newMeal = {
-            name: document.getElementById('dish-name').value, category: document.getElementById('dish-category').value,
-            difficulty: 'medium', price: document.getElementById('dish-price').value, image: document.getElementById('dish-image').value,
-            time: { active: document.getElementById('dish-time-active').value, total: document.getElementById('dish-time-total').value },
-            tags: [], ingredients: document.getElementById('dish-ingredients').value.split(',').map(i => i.trim()),
+            document.getElementById('custom-combo-builder').classList.toggle('hidden', e.target.dataset.preset !== 'custom');
         };
-        try { await addDoc(mealsCollection, newMeal); alert('✅ კერძი წარმატებით დაემატა!'); adminModal.close(); e.target.reset(); } catch(err) { alert('❌ შეცდომა!'); }
     });
+
+    document.getElementById('spin-combo-btn').onclick = () => spinCombo(document.querySelector('.preset-btn.active').dataset.preset);
+    
+    document.getElementById('favorites-btn').onclick = () => showListModal("❤️ ჩემი რჩეულები", favoriteMeals);
+    document.getElementById('history-btn').onclick = () => {
+        const flatHistory = historySpins.flatMap(h => h.meals);
+        showListModal("🕒 ბოლო დატრიალებები", [...new Map(flatHistory.map(m => [m.id, m])).values()]);
+    };
+    
+    document.getElementById('clear-inventory-btn').onclick = () => { userInventory = []; localStorage.removeItem('smartMealInventory'); renderIngredients(); };
 }
