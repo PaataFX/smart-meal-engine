@@ -92,6 +92,7 @@
                         <button id="clear-inventory-btn" class="btn-outline btn-small">
                             <i class="fa-solid fa-trash-can"></i> გასუფთავება
                         </button>
+                        <!-- ღილაკი "რა მოვამზადო?" -->
                         <button id="find-meals-btn" class="btn-primary btn-small">
                             <i class="fa-solid fa-magnifying-glass"></i> რა მოვამზადო?
                         </button>
@@ -221,7 +222,20 @@
         </div>
     </dialog>
 
-    <!-- Smart Recipes / History / Favorites Modal (მრავალფუნქციური სიებისთვის) -->
+    <!-- Smart Recipes Modal ("რა მოვამზადო?" შედეგებისთვის) -->
+    <dialog id="smart-recipes-modal" class="modal">
+        <div class="modal-content admin-scroll">
+            <header class="modal-header">
+                <h2><i class="fa-solid fa-lightbulb" style="color: var(--accent-gold);"></i> შემოთავაზებული კერძები</h2>
+                <button class="close-smart-modal" aria-label="დახურვა"><i class="fa-solid fa-xmark"></i></button>
+            </header>
+            <div id="smart-recipes-body">
+                <!-- JS ჩაყრის კერძებს აქ -->
+            </div>
+        </div>
+    </dialog>
+
+    <!-- History / Favorites Modal (რჩეულებისთვის და ისტორიისთვის) -->
     <dialog id="list-modal" class="modal">
         <div class="modal-content admin-scroll">
             <header class="modal-header">
