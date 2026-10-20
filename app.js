@@ -35,7 +35,7 @@ const CATEGORIES = {
 const ADMIN_PIN = '62442';
 const ALL_INGREDIENTS = ['ქათამი', 'კარტოფილი', 'ყველი', 'სულგუნი', 'კვერცხი', 'პომიდორი', 'კიტრი', 'ფარში', 'სოკო', 'ლობიო', 'ბრინჯი', 'მაკარონი', 'ნიგოზი', 'ბადრიჯანი', 'ისპანახი', 'ტუნა', 'კომბოსტო', 'სტაფილო', 'ჭარხალი', 'ნაღები', 'ბულგარული', 'მწვანილი', 'ნიორი', 'ხახვი', 'ცომი', 'ხორცი', 'ბაზილიკი', 'მაიონეზი', 'ზეთი', 'კარაქი'];
 
-// LocalStorage-დან მონაცემების ამოღება
+// მონაცემების ამოღება LocalStorage-დან
 let userInventory = JSON.parse(localStorage.getItem('smartMealInventory')) || [];
 let favoriteMeals = JSON.parse(localStorage.getItem('smartMealFavs')) || [];
 let historySpins = JSON.parse(localStorage.getItem('smartMealHistory')) || [];
@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setupEventListeners();
 });
 
+/* ==========================================================================
+   2. ბაზის ჩატვირთვა
+   ========================================================================== */
 function loadDataFromFirebase() {
     onSnapshot(mealsCollection, (snapshot) => {
         mealData = [];
@@ -70,7 +73,7 @@ async function seedInitialData() {
 }
 
 /* ==========================================================================
-   2. UI რენდერი (მაცივარი და მთვლელები)
+   3. UI რენდერი (მაცივარი და მთვლელები)
    ========================================================================== */
 function renderIngredients() {
     const container = document.getElementById('ingredient-list');
@@ -125,12 +128,12 @@ function populateAdminDropdown() {
 }
 
 /* ==========================================================================
-   3. ჭკვიანი ფილტრები და რენდომაიზერი
+   4. ჭკვიანი ფილტრები და რენდომაიზერი
    ========================================================================== */
 function getFilteredMeals(category) {
     let filtered = mealData.filter(m => m.category === category);
     
-    // დროის ფილტრი (< 30 წთ)
+    // დროის ფილტრი (< 30 წთ ან 1 სთ)
     if(document.getElementById('filter-time').checked) {
         filtered = filtered.filter(m => {
             const timeStr = m.time?.total || "";
@@ -184,13 +187,13 @@ function spinCombo(preset) {
         }
     });
 
-    // სინერგიის (კუჭის სიმძიმის) შემოწმება
+    // სინერგიის შემოწმება (მძიმე კომბინაციები)
     checkDissonance(comboResult);
     
     // ისტორიაში შენახვა და გაზიარების ღილაკის გამოჩენა
     if(comboResult.length > 0) {
         historySpins.unshift({ date: new Date().toLocaleString(), meals: comboResult });
-        if(historySpins.length > 5) historySpins.pop(); // ვინახავთ მხოლოდ ბოლო 5-ს
+        if(historySpins.length > 5) historySpins.pop(); 
         localStorage.setItem('smartMealHistory', JSON.stringify(historySpins));
         
         document.getElementById('share-menu-container').classList.remove('hidden');
@@ -221,7 +224,7 @@ function checkDissonance(combo) {
 }
 
 /* ==========================================================================
-   4. ბარათების გენერაცია და სლოტ-ანიმაცია
+   5. ბარათების გენერაცია და სლოტ-ანიმაცია
    ========================================================================== */
 function createAndSpinCard(category, finalItem, index, showIndex) {
     const container = document.getElementById('categories-container');
@@ -238,7 +241,7 @@ function createAndSpinCard(category, finalItem, index, showIndex) {
     if(favoriteMeals.some(m => m.id === finalItem.id)) favBtn.classList.add('saved');
     
     favBtn.onclick = (e) => {
-        e.stopPropagation(); // ხელს ვუშლით მოდალის გახსნას
+        e.stopPropagation(); 
         if(favBtn.classList.contains('saved')) {
             favoriteMeals = favoriteMeals.filter(m => m.id !== finalItem.id);
             favBtn.classList.remove('saved');
@@ -271,7 +274,7 @@ function runSlotAnimation(category, article, finalItem) {
 
 function finishCardSetup(article, item, resultEl) {
     resultEl.textContent = item.name;
-    article.classList.remove('loading'); // ვთიშავთ Skeleton-ს
+    article.classList.remove('loading'); 
     article.classList.add('has-result');
     article.querySelector('.card-bg-overlay').style.backgroundImage = `url('${item.image}')`;
     
@@ -309,7 +312,7 @@ function finishCardSetup(article, item, resultEl) {
 }
 
 /* ==========================================================================
-   5. მოდალები (Click-Outside, საყიდლების კოპირება, "რა მოვამზადო")
+   6. მოდალები და ძიება ("რა მოვამზადო")
    ========================================================================== */
 function openDetailModal(item) {
     const modal = document.getElementById('meal-detail-modal');
@@ -318,7 +321,6 @@ function openDetailModal(item) {
     
     let missing = item.ingredients ? item.ingredients.filter(ing => !userInventory.includes(ing)) : [];
     
-    // 1-Click Copy ღილაკი საყიდლებისთვის
     let shopBtn = '';
     if (missing.length > 0) {
         shopBtn = `<button class="btn-outline btn-small" id="copy-shop-btn" data-list="საყიდელია: ${missing.join(', ')}"><i class="fa-solid fa-copy"></i> სიის კოპირება</button>`;
@@ -329,6 +331,8 @@ function openDetailModal(item) {
             ? `<span class="ing-badge ing-has"><i class="fa-solid fa-check"></i> ${ing}</span>` 
             : `<span class="ing-badge ing-missing"><i class="fa-solid fa-xmark"></i> ${ing}</span>`;
     }).join('');
+    
+    const kcalDisplay = item.kcal ? item.kcal : '-';
 
     body.innerHTML = `
         <div class="meal-image-header" style="background-image: url('${item.image || ''}')"><div class="meal-image-overlay"></div></div>
@@ -339,7 +343,7 @@ function openDetailModal(item) {
             </div>
             <div class="detail-meta">
                 <span><i class="fa-solid fa-clock"></i> ${item.time?.total || '-'}</span>
-                <span><i class="fa-solid fa-fire"></i> ${item.kcal || '-'}</span>
+                <span><i class="fa-solid fa-fire"></i> ${kcalDisplay}</span>
             </div>
             ${badges ? `<div class="smart-ingredients-list">${badges}</div>` : ''}
         </div>`;
@@ -356,7 +360,6 @@ function openDetailModal(item) {
     }
 }
 
-// "რა მოვამზადო?" ალგორითმი
 function findMatchingMeals() {
     const storeToggle = document.getElementById('store-toggle').checked;
     const body = document.getElementById('smart-recipes-body');
@@ -421,10 +424,10 @@ function showListModal(title, itemsArray) {
 }
 
 /* ==========================================================================
-   6. Event Listeners (კლავიატურა და Click-outside)
+   7. Event Listeners 
    ========================================================================== */
 function setupEventListeners() {
-    // Space ღილაკით დატრიალება
+    // Space კლავიშით დატრიალება
     document.addEventListener('keydown', (e) => {
         if(e.code === 'Space' && !document.querySelector('dialog[open]')) {
             e.preventDefault();
@@ -436,7 +439,6 @@ function setupEventListeners() {
     document.querySelectorAll('dialog').forEach(dialog => {
         dialog.addEventListener('click', (event) => {
             const rect = dialog.getBoundingClientRect();
-            // ვამოწმებთ, დაწკაპება მოხდა თუ არა ფანჯრის საზღვრებს გარეთ
             const isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
                                 rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
             if (!isInDialog) { dialog.close(); }
@@ -464,11 +466,10 @@ function setupEventListeners() {
         spinCombo(document.querySelector('.preset-btn.active').dataset.preset);
     });
 
-    // Header-ის ღილაკები
     document.getElementById('favorites-btn').addEventListener('click', () => showListModal("❤️ ჩემი რჩეულები", favoriteMeals));
     document.getElementById('history-btn').addEventListener('click', () => {
         const flatHistory = historySpins.flatMap(h => h.meals);
-        const uniqueHistory = [...new Map(flatHistory.map(m => [m.id, m])).values()]; // ვშლით დუბლიკატებს
+        const uniqueHistory = [...new Map(flatHistory.map(m => [m.id, m])).values()]; 
         showListModal("🕒 ბოლო დატრიალებები", uniqueHistory);
     });
 
