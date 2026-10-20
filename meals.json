@@ -1,94 +1,2005 @@
 [
-  {"name": "ცეზარი", "category": "salad", "difficulty": "hard", "price": "$", "time": {"active": "10 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ტუნა", "category": "salad", "difficulty": "easy", "price": "$", "time": {"active": "15 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ბოსტნეულის", "category": "salad", "difficulty": "hard", "price": "$$$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "აწეწილი", "category": "salad", "difficulty": "medium", "price": "$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ოლივიე", "category": "salad", "difficulty": "easy", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ბერძნული", "category": "salad", "difficulty": "easy", "price": "$$$", "time": {"active": "30 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ტაბულე", "category": "salad", "difficulty": "medium", "price": "$$$", "time": {"active": "20 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "კომბოსტოს-სტაფილოს", "category": "salad", "difficulty": "easy", "price": "$$$", "time": {"active": "30 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ვინეგრეტი", "category": "salad", "difficulty": "medium", "price": "$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ჭარხლის", "category": "salad", "difficulty": "easy", "price": "$", "time": {"active": "30 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "კარტოფილი", "category": "salad", "difficulty": "medium", "price": "$$", "time": {"active": "20 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ლობიო სირსვალი", "category": "salad", "difficulty": "hard", "price": "$$", "time": {"active": "10 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "კინოა", "category": "salad", "difficulty": "easy", "price": "$$$", "time": {"active": "20 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ბრინჯი", "category": "salad", "difficulty": "medium", "price": "$$$", "time": {"active": "15 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "მაკარონი", "category": "salad", "difficulty": "easy", "price": "$$$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"},
-  {"name": "ბორში", "category": "soup", "difficulty": "easy", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "ჩიხირთმა", "category": "soup", "difficulty": "medium", "price": "$$", "time": {"active": "20 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "ოსპის კრემსუპი", "category": "soup", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "სოკოს კრემსუპი", "category": "soup", "difficulty": "hard", "price": "$$$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "ააზიური წვნიანები", "category": "soup", "difficulty": "hard", "price": "$", "time": {"active": "15 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "ლობიოს წვნიანი", "category": "soup", "difficulty": "medium", "price": "$$", "time": {"active": "20 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "გოგრის კრემსუპი", "category": "soup", "difficulty": "easy", "price": "$$$", "time": {"active": "20 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "ხორცის წვნიანი", "category": "soup", "difficulty": "easy", "price": "$", "time": {"active": "20 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"},
-  {"name": "შვრიის ფაფა", "category": "garnish", "difficulty": "medium", "price": "$", "time": {"active": "15 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "მანი ქაში", "category": "garnish", "difficulty": "hard", "price": "$$", "time": {"active": "15 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "კორკოტი", "category": "garnish", "difficulty": "medium", "price": "$$$", "time": {"active": "30 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "წანდილი", "category": "garnish", "difficulty": "medium", "price": "$", "time": {"active": "15 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ბრინჯის ფლავი", "category": "garnish", "difficulty": "hard", "price": "$$", "time": {"active": "30 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ღომი", "category": "garnish", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ელარჯი", "category": "garnish", "difficulty": "hard", "price": "$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "წიწიბურა", "category": "garnish", "difficulty": "easy", "price": "$", "time": {"active": "15 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "მწვანე ოსპი+ბურგული", "category": "garnish", "difficulty": "hard", "price": "$", "time": {"active": "30 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ტკბილი ფლავი", "category": "garnish", "difficulty": "hard", "price": "$$", "time": {"active": "20 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ნიგვზიანი ბადრიჯანი", "category": "cold", "difficulty": "easy", "price": "$$$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ისპანახი", "category": "cold", "difficulty": "medium", "price": "$$$", "time": {"active": "20 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ჭარხალი და სტაფილო", "category": "cold", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ფხალი", "category": "cold", "difficulty": "easy", "price": "$$$", "time": {"active": "20 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ჭინჭარი", "category": "cold", "difficulty": "easy", "price": "$$$", "time": {"active": "10 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "მწვანე ლობიოს ფხალი", "category": "cold", "difficulty": "hard", "price": "$$$", "time": {"active": "15 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ბულგარულის", "category": "cold", "difficulty": "medium", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ჯონჯოლის ფხ", "category": "cold", "difficulty": "medium", "price": "$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ყვავ. კომბ.ფხ.", "category": "cold", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ხის სოკო", "category": "cold", "difficulty": "easy", "price": "$$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "სოკო სულგუნით", "category": "cold", "difficulty": "hard", "price": "$$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "ლაზანია", "category": "bakery", "difficulty": "easy", "price": "$", "time": {"active": "30 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "აჩმა", "category": "bakery", "difficulty": "easy", "price": "$$", "time": {"active": "30 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "მადამ ბოვარი", "category": "main", "difficulty": "hard", "price": "$$$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "მაკენდყველი", "category": "bakery", "difficulty": "medium", "price": "$$$", "time": {"active": "20 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "პიცა", "category": "bakery", "difficulty": "hard", "price": "$$", "time": {"active": "10 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ხაჭაპური", "category": "bakery", "difficulty": "easy", "price": "$", "time": {"active": "20 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ლობიანი", "category": "bakery", "difficulty": "hard", "price": "$$$", "time": {"active": "15 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ღვეზელი ტარხუნით და ბრი.", "category": "bakery", "difficulty": "easy", "price": "$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ღვეზელი", "category": "bakery", "difficulty": "easy", "price": "$", "time": {"active": "10 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ხორც.ბლინები", "category": "main", "difficulty": "easy", "price": "$$$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "ჩიბურეკი", "category": "bakery", "difficulty": "hard", "price": "$$", "time": {"active": "15 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ჭვიშტარი", "category": "bakery", "difficulty": "easy", "price": "$$$", "time": {"active": "30 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "შემწვარი კარტოფი", "category": "garnish", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "შქმერული", "category": "main", "difficulty": "easy", "price": "$$$", "time": {"active": "30 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "აჯაბსანდალი", "category": "main", "difficulty": "medium", "price": "$$", "time": {"active": "30 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "ხინკალი", "category": "main", "difficulty": "hard", "price": "$$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "საცივი", "category": "main", "difficulty": "medium", "price": "$$$", "time": {"active": "20 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "ტოლმა", "category": "main", "difficulty": "easy", "price": "$", "time": {"active": "15 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "მჭადი", "category": "bakery", "difficulty": "medium", "price": "$", "time": {"active": "30 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "თაშმიჯაბი", "category": "garnish", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ნადუღი პიტნით", "category": "cold", "difficulty": "medium", "price": "$$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"},
-  {"name": "პასტა", "category": "main", "difficulty": "hard", "price": "$$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "ატრია", "category": "main", "difficulty": "easy", "price": "$", "time": {"active": "30 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "კვერცხი მწვანე ხახვით", "category": "main", "difficulty": "medium", "price": "$", "time": {"active": "30 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "შაკშუკა სულგუნით", "category": "main", "difficulty": "easy", "price": "$$", "time": {"active": "10 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "ბაჟე", "category": "sauce", "difficulty": "medium", "price": "$$", "time": {"active": "20 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"},
-  {"name": "პესტო", "category": "sauce", "difficulty": "hard", "price": "$$$", "time": {"active": "30 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"},
-  {"name": "ბეშამელი", "category": "sauce", "difficulty": "easy", "price": "$$", "time": {"active": "15 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"},
-  {"name": "ყველის სოუსი", "category": "sauce", "difficulty": "hard", "price": "$$$", "time": {"active": "10 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"},
-  {"name": "ბეშამელი პასტა", "category": "sauce", "difficulty": "easy", "price": "$", "time": {"active": "30 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"},
-  {"name": "გუაკამოლე", "category": "sauce", "difficulty": "hard", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"},
-  {"name": "სტეიკი", "category": "main", "difficulty": "easy", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "რატატუი", "category": "main", "difficulty": "easy", "price": "$$$", "time": {"active": "15 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "კატლეტი", "category": "main", "difficulty": "easy", "price": "$$$", "time": {"active": "15 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "პიურე", "category": "garnish", "difficulty": "hard", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"},
-  {"name": "ტირამისუ", "category": "dessert", "difficulty": "hard", "price": "$$$", "time": {"active": "20 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "ჩიზქეიქი", "category": "dessert", "difficulty": "easy", "price": "$$$", "time": {"active": "20 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "ფახლავა", "category": "dessert", "difficulty": "medium", "price": "$$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "ტკბილი ღვეზელი", "category": "dessert", "difficulty": "medium", "price": "$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "ვაშლის ღვეზელი", "category": "dessert", "difficulty": "medium", "price": "$$$", "time": {"active": "10 წთ", "total": "20 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "გამომცხვარი გოგრა", "category": "dessert", "difficulty": "hard", "price": "$", "time": {"active": "20 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "ვრაპი", "category": "main", "difficulty": "medium", "price": "$", "time": {"active": "15 წთ", "total": "45 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"},
-  {"name": "სინამონ როლს", "category": "dessert", "difficulty": "medium", "price": "$", "time": {"active": "30 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"},
-  {"name": "მწნილები", "category": "extra", "difficulty": "hard", "price": "$$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=600"},
-  {"name": "ყველები", "category": "extra", "difficulty": "medium", "price": "$$$", "time": {"active": "10 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=600"},
-  {"name": "აჭარული ხაჭაპური", "category": "bakery", "difficulty": "medium", "price": "$", "time": {"active": "10 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ხორციანი პერაშკი", "category": "bakery", "difficulty": "easy", "price": "$$", "time": {"active": "20 წთ", "total": "1 სთ 30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600"},
-  {"name": "ტკბილი კრეპები", "category": "dessert", "difficulty": "easy", "price": "$$$", "time": {"active": "20 წთ", "total": "30 წთ"}, "tags": [], "ingredients": [], "image": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600"}
+  {
+    "name": "ცეზარი",
+    "category": "salad",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "მსუბუქი",
+      "ხორციანი"
+    ],
+    "ingredients": [
+      "ქათამი",
+      "ყველი",
+      "პომიდორი",
+      "კვერცხი",
+      "სალათის ფურცლები"
+    ],
+    "image": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=600"
+  },
+  {
+    "name": "ტუნა",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "10 წთ",
+      "total": "15 წთ"
+    },
+    "tags": [
+      "მსუბუქი",
+      "თევზიანი"
+    ],
+    "ingredients": [
+      "ტუნა",
+      "კვერცხი",
+      "კიტრი",
+      "ხახვი"
+    ],
+    "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600"
+  },
+  {
+    "name": "ბოსტნეულის",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "მსუბუქი"
+    ],
+    "ingredients": [
+      "პომიდორი",
+      "კიტრი",
+      "ხახვი",
+      "მწვანილი"
+    ],
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"
+  },
+  {
+    "name": "აწეწილი",
+    "category": "salad",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ხორციანი",
+      "მძიმე"
+    ],
+    "ingredients": [
+      "ხორცი",
+      "მაიონეზი",
+      "მწნილი"
+    ],
+    "image": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600"
+  },
+  {
+    "name": "ოლივიე",
+    "category": "salad",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "მძიმე",
+      "ხორციანი"
+    ],
+    "ingredients": [
+      "კარტოფილი",
+      "კვერცხი",
+      "სტაფილო",
+      "ბარდა",
+      "მაიონეზი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Olivier_salad_005.jpg/600px-Olivier_salad_005.jpg"
+  },
+  {
+    "name": "ბერძნული",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "10 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ვეგეტარიანული",
+      "ყველიანი",
+      "მსუბუქი"
+    ],
+    "ingredients": [
+      "პომიდორი",
+      "კიტრი",
+      "ყველი ფეტა",
+      "ზეთისხილი"
+    ],
+    "image": "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600"
+  },
+  {
+    "name": "ტაბულე",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "მსუბუქი"
+    ],
+    "ingredients": [
+      "ბულგარული",
+      "ოხრახუში",
+      "პომიდორი",
+      "ბურგული"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Tabbouleh.jpg/600px-Tabbouleh.jpg"
+  },
+  {
+    "name": "კომბოსტოს-სტაფილოს",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "დიეტური"
+    ],
+    "ingredients": [
+      "კომბოსტო",
+      "სტაფილო",
+      "ძმარი"
+    ],
+    "image": "https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600"
+  },
+  {
+    "name": "ვინეგრეტი",
+    "category": "salad",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "25 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "დიეტური"
+    ],
+    "ingredients": [
+      "ჭარხალი",
+      "კარტოფილი",
+      "სტაფილო",
+      "მწნილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Vinegret.jpg/600px-Vinegret.jpg"
+  },
+  {
+    "name": "ჭარხლის",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "ტკბილი"
+    ],
+    "ingredients": [
+      "ჭარხალი",
+      "ნიგოზი",
+      "ტყემალი"
+    ],
+    "image": "https://images.unsplash.com/photo-1580013759032-1d65826f553c?w=600"
+  },
+  {
+    "name": "კარტოფილი",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ვეგეტარიანული",
+      "მძიმე"
+    ],
+    "ingredients": [
+      "კარტოფილი",
+      "კვერცხი",
+      "ხახვი",
+      "მაიონეზი"
+    ],
+    "image": "https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?w=600"
+  },
+  {
+    "name": "ლობიო სირსვალი",
+    "category": "salad",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "მძიმე"
+    ],
+    "ingredients": [
+      "ლობიო",
+      "ნიგოზი",
+      "ნიორი",
+      "მწვანილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lobio_in_a_clay_pot.jpg/600px-Lobio_in_a_clay_pot.jpg"
+  },
+  {
+    "name": "კინოა",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "ვეგანური",
+      "დიეტური"
+    ],
+    "ingredients": [
+      "კინოა",
+      "ბოსტნეული",
+      "ლიმონი"
+    ],
+    "image": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600"
+  },
+  {
+    "name": "ბრინჯი",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ვეგეტარიანული",
+      "მსუბუქი"
+    ],
+    "ingredients": [
+      "ბრინჯი",
+      "სიმინდი",
+      "ბარდა",
+      "მაიონეზი"
+    ],
+    "image": "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?w=600"
+  },
+  {
+    "name": "მაკარონი",
+    "category": "salad",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "ვეგეტარიანული",
+      "მძიმე"
+    ],
+    "ingredients": [
+      "მაკარონი",
+      "ყველი",
+      "მაიონეზი",
+      "პომიდორი"
+    ],
+    "image": "https://images.unsplash.com/photo-1621996316565-e3dbc646d9a9?w=600"
+  },
+  {
+    "name": "ბორში",
+    "category": "soup",
+    "difficulty": "hard",
+    "price": "$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "1 სთ 30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ბოსტნეული"
+    ],
+    "ingredients": [
+      "ჭარხალი",
+      "კომბოსტო",
+      "ხორცი",
+      "კარტოფილი",
+      "სტაფილო"
+    ],
+    "image": "https://images.unsplash.com/photo-1628294895950-9805252327bc?w=600"
+  },
+  {
+    "name": "ჩიხირთმა",
+    "category": "soup",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "50 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ქათამი",
+      "კვერცხი",
+      "ძმარი",
+      "ქინძი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Chikhirtma.jpg/600px-Chikhirtma.jpg"
+  },
+  {
+    "name": "ოსპის კრემსუპი",
+    "category": "soup",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "კრემოვანი"
+    ],
+    "ingredients": [
+      "ოსპი",
+      "სტაფილო",
+      "ხახვი",
+      "პიტნა"
+    ],
+    "image": "https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600"
+  },
+  {
+    "name": "სოკოს კრემსუპი",
+    "category": "soup",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "კრემოვანი"
+    ],
+    "ingredients": [
+      "სოკო",
+      "ნაღები",
+      "ხახვი",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?w=600"
+  },
+  {
+    "name": "ააზიური წვნიანები",
+    "category": "soup",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "25 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ცხარე"
+    ],
+    "ingredients": [
+      "მაკარონი (რამენი)",
+      "ხორცი/ქათამი",
+      "სოიოს სოუსი",
+      "კვერცხი"
+    ],
+    "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600"
+  },
+  {
+    "name": "ლობიოს წვნიანი",
+    "category": "soup",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ლობიო",
+      "ნიორი",
+      "მწვანილი",
+      "ხახვი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Lobio_in_a_clay_pot.jpg/600px-Lobio_in_a_clay_pot.jpg"
+  },
+  {
+    "name": "გოგრის კრემსუპი",
+    "category": "soup",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "35 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "ტკბილი"
+    ],
+    "ingredients": [
+      "გოგრა",
+      "ნაღები",
+      "გოგრის თესლი"
+    ],
+    "image": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=600"
+  },
+  {
+    "name": "ხორცის წვნიანი",
+    "category": "soup",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი"
+    ],
+    "ingredients": [
+      "ხორცი",
+      "კარტოფილი",
+      "სტაფილო",
+      "მწვანილი"
+    ],
+    "image": "https://images.unsplash.com/photo-1529563021893-68dd3ec54284?w=600"
+  },
+  {
+    "name": "შვრიის ფაფა",
+    "category": "garnish",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "5 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "დიეტური"
+    ],
+    "ingredients": [
+      "შვრია",
+      "რძე",
+      "თაფლი"
+    ],
+    "image": "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=600"
+  },
+  {
+    "name": "მანი ქაში",
+    "category": "garnish",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "5 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი"
+    ],
+    "ingredients": [
+      "მანი",
+      "რძე",
+      "შაქარი",
+      "კარაქი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Semolina_pudding.jpg/600px-Semolina_pudding.jpg"
+  },
+  {
+    "name": "კორკოტი",
+    "category": "garnish",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი"
+    ],
+    "ingredients": [
+      "ხორბალი",
+      "თაფლი",
+      "ნიგოზი",
+      "ქიშმიში"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Kutia_1.jpg/600px-Kutia_1.jpg"
+  },
+  {
+    "name": "წანდილი",
+    "category": "garnish",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი"
+    ],
+    "ingredients": [
+      "ხორბალი",
+      "ნიგოზი",
+      "თაფლი",
+      "შაქარი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Kutia_1.jpg/600px-Kutia_1.jpg"
+  },
+  {
+    "name": "ბრინჯის ფლავი",
+    "category": "garnish",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი"
+    ],
+    "ingredients": [
+      "ბრინჯი",
+      "ხორცი",
+      "სტაფილო",
+      "ხახვი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Uzbek_palov.jpg/600px-Uzbek_palov.jpg"
+  },
+  {
+    "name": "ღომი",
+    "category": "garnish",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "მძიმე",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ღერღილი",
+      "სიმინდის ფქვილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Ghomi_and_sulguni.jpg/600px-Ghomi_and_sulguni.jpg"
+  },
+  {
+    "name": "ელარჯი",
+    "category": "garnish",
+    "difficulty": "hard",
+    "price": "$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "მძიმე",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ღერღილი",
+      "სიმინდის ფქვილი",
+      "სულგუნი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Elarji.jpg/600px-Elarji.jpg"
+  },
+  {
+    "name": "წიწიბურა",
+    "category": "garnish",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "5 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური"
+    ],
+    "ingredients": [
+      "წიწიბურა",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1627308595229-7830f5c9e665?w=600"
+  },
+  {
+    "name": "მწვანე ოსპი+ბურგული",
+    "category": "garnish",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "35 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "დიეტური"
+    ],
+    "ingredients": [
+      "მწვანე ოსპი",
+      "ბურგული",
+      "ხახვი"
+    ],
+    "image": "https://images.unsplash.com/photo-1598515053915-d72ad79ff1fb?w=600"
+  },
+  {
+    "name": "ტკბილი ფლავი",
+    "category": "garnish",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "ვეგანური"
+    ],
+    "ingredients": [
+      "ბრინჯი",
+      "ქიშმიში",
+      "გარგარის ჩირი",
+      "შაქარი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Shirin_polov.jpg/600px-Shirin_polov.jpg"
+  },
+  {
+    "name": "პიურე",
+    "category": "garnish",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული"
+    ],
+    "ingredients": [
+      "კარტოფილი",
+      "რძე",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1615486171430-802c65910901?w=600"
+  },
+  {
+    "name": "შემწვარი კარტოფი",
+    "category": "garnish",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური"
+    ],
+    "ingredients": [
+      "კარტოფილი",
+      "ზეთი",
+      "მარილი"
+    ],
+    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600"
+  },
+  {
+    "name": "თაშმიჯაბი",
+    "category": "garnish",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ყველიანი",
+      "მძიმე",
+      "ქართული"
+    ],
+    "ingredients": [
+      "კარტოფილი",
+      "სულგუნი",
+      "რძე"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Tashmijabi.jpg/600px-Tashmijabi.jpg"
+  },
+  {
+    "name": "ნიგვზიანი ბადრიჯანი",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "25 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ბადრიჯანი",
+      "ნიგოზი",
+      "ნიორი",
+      "მწვანილი",
+      "ბროწეული"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Badrijani_nigvzit.jpg/600px-Badrijani_nigvzit.jpg"
+  },
+  {
+    "name": "ისპანახი",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ისპანახი",
+      "ნიგოზი",
+      "ნიორი",
+      "ქინძი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pkhali_with_walnuts.jpg/600px-Pkhali_with_walnuts.jpg"
+  },
+  {
+    "name": "ჭარხალი და სტაფილო",
+    "category": "cold",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "დიეტური"
+    ],
+    "ingredients": [
+      "ჭარხალი",
+      "სტაფილო",
+      "მაიონეზი/ზეთი"
+    ],
+    "image": "https://images.unsplash.com/photo-1590412200988-a436970781fa?w=600"
+  },
+  {
+    "name": "ფხალი",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი"
+    ],
+    "ingredients": [
+      "ბოსტნეული (არჩევით)",
+      "ნიგოზი",
+      "ნიორი",
+      "ძმარი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pkhali_with_walnuts.jpg/600px-Pkhali_with_walnuts.jpg"
+  },
+  {
+    "name": "ჭინჭარი",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი"
+    ],
+    "ingredients": [
+      "ჭინჭარი",
+      "ნიგოზი",
+      "ნიორი",
+      "სუნელები"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pkhali_with_walnuts.jpg/600px-Pkhali_with_walnuts.jpg"
+  },
+  {
+    "name": "მწვანე ლობიოს ფხალი",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი"
+    ],
+    "ingredients": [
+      "მწვანე ლობიო",
+      "ნიგოზი",
+      "ხახვი",
+      "ნიორი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pkhali_with_walnuts.jpg/600px-Pkhali_with_walnuts.jpg"
+  },
+  {
+    "name": "ბულგარულის",
+    "category": "cold",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "15 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური"
+    ],
+    "ingredients": [
+      "ბულგარული წიწაკა",
+      "ზეთი",
+      "ძმარი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Peppers_in_oil.jpg/600px-Peppers_in_oil.jpg"
+  },
+  {
+    "name": "ჯონჯოლის ფხ",
+    "category": "cold",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "5 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური"
+    ],
+    "ingredients": [
+      "ჯონჯოლი",
+      "ხახვი",
+      "ზეთი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Jonjoli.jpg/600px-Jonjoli.jpg"
+  },
+  {
+    "name": "ყვავ. კომბ.ფხ.",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი"
+    ],
+    "ingredients": [
+      "ყვავილოვანი კომბოსტო",
+      "ნიგოზი",
+      "ნიორი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Pkhali_with_walnuts.jpg/600px-Pkhali_with_walnuts.jpg"
+  },
+  {
+    "name": "ხის სოკო",
+    "category": "cold",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "35 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "მწვანილი"
+    ],
+    "ingredients": [
+      "ხის სოკო",
+      "ქინძი",
+      "ძმარი",
+      "ზეთი"
+    ],
+    "image": "https://images.unsplash.com/photo-1576087563533-e5d0383b7076?w=600"
+  },
+  {
+    "name": "სოკო სულგუნით",
+    "category": "cold",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "ყველიანი"
+    ],
+    "ingredients": [
+      "სოკო (შამპინიონი)",
+      "სულგუნი",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1598515053915-d72ad79ff1fb?w=600"
+  },
+  {
+    "name": "ნადუღი პიტნით",
+    "category": "cold",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "5 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგეტარიანული",
+      "მსუბუქი",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ნადუღი",
+      "პიტნა",
+      "სულგუნის ფირფიტები"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Nadughi.jpg/600px-Nadughi.jpg"
+  },
+  {
+    "name": "ლაზანია",
+    "category": "bakery",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "1 სთ 30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "მაკარონი (ლაზანიის)",
+      "ფარში",
+      "ყველი",
+      "ბეშამელი",
+      "პომიდორი"
+    ],
+    "image": "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=600"
+  },
+  {
+    "name": "აჩმა",
+    "category": "bakery",
+    "difficulty": "hard",
+    "price": "$$",
+    "time": {
+      "active": "40 წთ",
+      "total": "2 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ყველიანი",
+      "ცომეული",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ყველი",
+      "კარაქი",
+      "კვერცხი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Achma.jpg/600px-Achma.jpg"
+  },
+  {
+    "name": "მაკენდყველი",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "35 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ყველიანი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "მაკარონი",
+      "ყველი (ჩედარი)",
+      "რძე",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=600"
+  },
+  {
+    "name": "პიცა",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ცომეული",
+      "ყველიანი"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ყველი",
+      "პომიდორი",
+      "ძეხვი"
+    ],
+    "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600"
+  },
+  {
+    "name": "ხაჭაპური",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ყველიანი",
+      "ცომეული",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "იმერული ყველი",
+      "სულგუნი",
+      "კარაქი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Imeretian_khachapuri.jpg/600px-Imeretian_khachapuri.jpg"
+  },
+  {
+    "name": "ლობიანი",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "50 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "ცომეული",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ლობიო",
+      "ლორი/ბეკონი (სურვილით)",
+      "სუნელები"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Lobiani.jpg/600px-Lobiani.jpg"
+  },
+  {
+    "name": "ღვეზელი ტარხუნით და ბრი.",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "50 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ბრინჯი",
+      "ტარხუნა",
+      "კვერცხი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Pirozhki.jpg/600px-Pirozhki.jpg"
+  },
+  {
+    "name": "ღვეზელი",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "შიგთავსი (კარტოფილი/ლობიო/ხორცი)"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Pirozhki.jpg/600px-Pirozhki.jpg"
+  },
+  {
+    "name": "ჩიბურეკი",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ცომეული",
+      "შემწვარი"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ფარში",
+      "ხახვი",
+      "ზეთი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Chebureki.jpg/600px-Chebureki.jpg"
+  },
+  {
+    "name": "ჭვიშტარი",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ყველიანი",
+      "ქართული",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "სიმინდის ფქვილი",
+      "სულგუნი",
+      "რძე/წყალი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Chvishtari.jpg/600px-Chvishtari.jpg"
+  },
+  {
+    "name": "მჭადი",
+    "category": "bakery",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "ქართული"
+    ],
+    "ingredients": [
+      "სიმინდის ფქვილი",
+      "წყალი",
+      "მარილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mchadi.jpg/600px-Mchadi.jpg"
+  },
+  {
+    "name": "აჭარული ხაჭაპური",
+    "category": "bakery",
+    "difficulty": "hard",
+    "price": "$$",
+    "time": {
+      "active": "25 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ყველიანი",
+      "ცომეული",
+      "მძიმე",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ყველი",
+      "კვერცხი",
+      "კარაქი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Adjaruli_bano.jpg/600px-Adjaruli_bano.jpg"
+  },
+  {
+    "name": "ხორციანი პერაშკი",
+    "category": "bakery",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "50 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ფარში",
+      "ხახვი",
+      "ზეთი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Pirozhki.jpg/600px-Pirozhki.jpg"
+  },
+  {
+    "name": "მადამ ბოვარი",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ყველიანი"
+    ],
+    "ingredients": [
+      "ხორცი",
+      "კარტოფილი",
+      "ყველი",
+      "მაიონეზი",
+      "სოკო"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"
+  },
+  {
+    "name": "ხორც.ბლინები",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "25 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "ბლინის ცომი",
+      "ფარში",
+      "ხახვი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Blintzes.jpg/600px-Blintzes.jpg"
+  },
+  {
+    "name": "შქმერული",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "50 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ნიორი",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ქათამი",
+      "ნიორი",
+      "ნაღები/რძე"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Shkmeruli.jpg/600px-Shkmeruli.jpg"
+  },
+  {
+    "name": "აჯაბსანდალი",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "ბოსტნეული",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ბადრიჯანი",
+      "პომიდორი",
+      "ბულგარული",
+      "კარტოფილი",
+      "მწვანილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ajabsandali.jpg/600px-Ajabsandali.jpg"
+  },
+  {
+    "name": "ხინკალი",
+    "category": "main",
+    "difficulty": "hard",
+    "price": "$$",
+    "time": {
+      "active": "40 წთ",
+      "total": "1 სთ 30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "ცომეული",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ფარში",
+      "ცომი",
+      "ხახვი",
+      "შავი პილპილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Khinkali_3.jpg/600px-Khinkali_3.jpg"
+  },
+  {
+    "name": "საცივი",
+    "category": "main",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "40 წთ",
+      "total": "3 სთ"
+    },
+    "tags": [
+      "ცივი",
+      "ხორციანი",
+      "ნიგვზიანი",
+      "ქართული",
+      "სადღესასწაულო"
+    ],
+    "ingredients": [
+      "ინდაური/ქათამი",
+      "ნიგოზი",
+      "ნიორი",
+      "მიხაკ-დარიჩინი",
+      "ყვითელი ყვავილი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Satsivi.jpg/600px-Satsivi.jpg"
+  },
+  {
+    "name": "ტოლმა",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "1 სთ 30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი"
+    ],
+    "ingredients": [
+      "ფარში",
+      "ბრინჯი",
+      "კომბოსტო/ვაზის ფოთოლი",
+      "მაწონი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Dolma_in_Armenia.jpg/600px-Dolma_in_Armenia.jpg"
+  },
+  {
+    "name": "პასტა",
+    "category": "main",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "მაკარონი",
+      "ყველი",
+      "ტომატის სოუსი"
+    ],
+    "image": "https://images.unsplash.com/photo-1621996316565-e3dbc646d9a9?w=600"
+  },
+  {
+    "name": "ატრია",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ცომეული",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ხელნაკეთი მაკარონი",
+      "ყველი",
+      "ერბო"
+    ],
+    "image": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600"
+  },
+  {
+    "name": "კვერცხი მწვანე ხახვით",
+    "category": "main",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "5 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "საუზმე"
+    ],
+    "ingredients": [
+      "კვერცხი",
+      "მწვანე ხახვი",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1525385133512-2f3bdd039054?w=600"
+  },
+  {
+    "name": "შაკშუკა სულგუნით",
+    "category": "main",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "საუზმე"
+    ],
+    "ingredients": [
+      "კვერცხი",
+      "პომიდორი",
+      "ბულგარული",
+      "სულგუნი",
+      "ხახვი"
+    ],
+    "image": "https://images.unsplash.com/photo-1590412200988-a436970781fa?w=600"
+  },
+  {
+    "name": "სტეიკი",
+    "category": "main",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "15 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "პრემიუმ"
+    ],
+    "ingredients": [
+      "ძროხის ხორცი (სტეიკი)",
+      "კარაქი",
+      "როზმარინი",
+      "ნიორი"
+    ],
+    "image": "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600"
+  },
+  {
+    "name": "რატატუი",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "25 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგანური",
+      "ბოსტნეული"
+    ],
+    "ingredients": [
+      "ბადრიჯანი",
+      "ყაბაყი",
+      "პომიდორი",
+      "ბულგარული",
+      "ტომატის სოუსი"
+    ],
+    "image": "https://images.unsplash.com/photo-1572453800999-e8d2d1589b7c?w=600"
+  },
+  {
+    "name": "კატლეტი",
+    "category": "main",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "40 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "შემწვარი"
+    ],
+    "ingredients": [
+      "ფარში",
+      "ხახვი",
+      "პური",
+      "კვერცხი"
+    ],
+    "image": "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600"
+  },
+  {
+    "name": "ვრაპი",
+    "category": "main",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "10 წთ",
+      "total": "15 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ხორციანი",
+      "სწრაფი"
+    ],
+    "ingredients": [
+      "ლავაში",
+      "ქათამი/ხორცი",
+      "ბოსტნეული",
+      "სოუსი"
+    ],
+    "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=600"
+  },
+  {
+    "name": "ბაჟე",
+    "category": "sauce",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "25 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "ნიგვზიანი",
+      "ქართული"
+    ],
+    "ingredients": [
+      "ნიგოზი",
+      "ნიორი",
+      "უცხო სუნელი",
+      "ყვითელი ყვავილი",
+      "ძმარი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Bazhe.jpg/600px-Bazhe.jpg"
+  },
+  {
+    "name": "პესტო",
+    "category": "sauce",
+    "difficulty": "easy",
+    "price": "$$$",
+    "time": {
+      "active": "10 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგეტარიანული",
+      "მწვანე"
+    ],
+    "ingredients": [
+      "ბაზილიკი",
+      "ნიორი",
+      "პარმეზანი",
+      "ზეითუნის ზეთი",
+      "კედრის კაკალი"
+    ],
+    "image": "https://images.unsplash.com/photo-1588168333986-50845fce0ba0?w=600"
+  },
+  {
+    "name": "ბეშამელი",
+    "category": "sauce",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "15 წთ",
+      "total": "15 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "კრემოვანი"
+    ],
+    "ingredients": [
+      "კარაქი",
+      "ფქვილი",
+      "რძე",
+      "მუსკატის კაკალი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bechamel_sauce.jpg/600px-Bechamel_sauce.jpg"
+  },
+  {
+    "name": "ყველის სოუსი",
+    "category": "sauce",
+    "difficulty": "easy",
+    "price": "$$",
+    "time": {
+      "active": "10 წთ",
+      "total": "15 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "ყველიანი"
+    ],
+    "ingredients": [
+      "ყველი",
+      "ნაღები",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1619864273062-817666270503?w=600"
+  },
+  {
+    "name": "ბეშამელი პასტა",
+    "category": "sauce",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "30 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ვეგეტარიანული",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "მაკარონი",
+      "რძე",
+      "ფქვილი",
+      "კარაქი",
+      "ყველი"
+    ],
+    "image": "https://images.unsplash.com/photo-1611270629569-8b357cb88da9?w=600"
+  },
+  {
+    "name": "გუაკამოლე",
+    "category": "sauce",
+    "difficulty": "easy",
+    "price": "$$$",
+    "time": {
+      "active": "10 წთ",
+      "total": "10 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "მსუბუქი"
+    ],
+    "ingredients": [
+      "ავოკადო",
+      "პომიდორი",
+      "ხახვი",
+      "ქინძი",
+      "ლაიმი"
+    ],
+    "image": "https://images.unsplash.com/photo-1604152135912-04a022e23696?w=600"
+  },
+  {
+    "name": "ტირამისუ",
+    "category": "dessert",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "4 სთ"
+    },
+    "tags": [
+      "ცივი",
+      "ტკბილი",
+      "ყველიანი",
+      "პრემიუმ"
+    ],
+    "ingredients": [
+      "მასკარპონე",
+      "ყავა",
+      "კვერცხი",
+      "სავოიარდი",
+      "კაკაო"
+    ],
+    "image": "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600"
+  },
+  {
+    "name": "ჩიზქეიქი",
+    "category": "dessert",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "4 სთ"
+    },
+    "tags": [
+      "ცივი",
+      "ტკბილი",
+      "ყველიანი",
+      "პრემიუმ"
+    ],
+    "ingredients": [
+      "კრემ-ყველი",
+      "ნაღები",
+      "კვერცხი",
+      "ორცხობილა",
+      "კარაქი"
+    ],
+    "image": "https://images.unsplash.com/photo-1524351199678-941a58a3df50?w=600"
+  },
+  {
+    "name": "ფახლავა",
+    "category": "dessert",
+    "difficulty": "hard",
+    "price": "$$$",
+    "time": {
+      "active": "40 წთ",
+      "total": "2 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "ნიგვზიანი"
+    ],
+    "ingredients": [
+      "ცომი (ფილო)",
+      "ნიგოზი",
+      "თაფლი",
+      "კარაქი",
+      "შაქარი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Baklava_-_Turkish_special.jpg/600px-Baklava_-_Turkish_special.jpg"
+  },
+  {
+    "name": "ტკბილი ღვეზელი",
+    "category": "dessert",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "გამომცხვარი"
+    ],
+    "ingredients": [
+      "ცომი",
+      "ჯემი/ხილი",
+      "კვერცხი"
+    ],
+    "image": "https://images.unsplash.com/photo-1562007908-17c67e878c88?w=600"
+  },
+  {
+    "name": "ვაშლის ღვეზელი",
+    "category": "dessert",
+    "difficulty": "medium",
+    "price": "$$",
+    "time": {
+      "active": "20 წთ",
+      "total": "1 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "გამომცხვარი"
+    ],
+    "ingredients": [
+      "ვაშლი",
+      "ცომი",
+      "დარიჩინი",
+      "შაქარი"
+    ],
+    "image": "https://images.unsplash.com/photo-1562007908-17c67e878c88?w=600"
+  },
+  {
+    "name": "გამომცხვარი გოგრა",
+    "category": "dessert",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "10 წთ",
+      "total": "45 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "ვეგანური"
+    ],
+    "ingredients": [
+      "გოგრა",
+      "შაქარი",
+      "თაფლი",
+      "ნიგოზი"
+    ],
+    "image": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?w=600"
+  },
+  {
+    "name": "სინამონ როლს",
+    "category": "dessert",
+    "difficulty": "hard",
+    "price": "$$",
+    "time": {
+      "active": "30 წთ",
+      "total": "2 სთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "ცომეული"
+    ],
+    "ingredients": [
+      "ცომი",
+      "დარიჩინი",
+      "შაქარი",
+      "კარაქი",
+      "კრემ-ყველი"
+    ],
+    "image": "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=600"
+  },
+  {
+    "name": "ტკბილი კრეპები",
+    "category": "dessert",
+    "difficulty": "medium",
+    "price": "$",
+    "time": {
+      "active": "20 წთ",
+      "total": "20 წთ"
+    },
+    "tags": [
+      "ცხელი",
+      "ტკბილი",
+      "საუზმე"
+    ],
+    "ingredients": [
+      "კვერცხი",
+      "რძე",
+      "ფქვილი",
+      "შოკოლადი/ნუტელა",
+      "ბანანი"
+    ],
+    "image": "https://images.unsplash.com/photo-1519676860045-d6016e3e5510?w=600"
+  },
+  {
+    "name": "მწნილები",
+    "category": "extra",
+    "difficulty": "easy",
+    "price": "$",
+    "time": {
+      "active": "5 წთ",
+      "total": "5 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ვეგანური",
+      "მჟავე",
+      "ქართული"
+    ],
+    "ingredients": [
+      "კიტრი",
+      "პომიდორი",
+      "კომბოსტო",
+      "ჯონჯოლი"
+    ],
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Pickles.jpg/600px-Pickles.jpg"
+  },
+  {
+    "name": "ყველები",
+    "category": "extra",
+    "difficulty": "easy",
+    "price": "$$$",
+    "time": {
+      "active": "5 წთ",
+      "total": "5 წთ"
+    },
+    "tags": [
+      "ცივი",
+      "ყველიანი"
+    ],
+    "ingredients": [
+      "იმერული ყველი",
+      "სულგუნი",
+      "გუდა",
+      "შებოლილი სულგუნი"
+    ],
+    "image": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=600"
+  }
 ]
